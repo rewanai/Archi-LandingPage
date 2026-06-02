@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0ea5e9" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="16" fill="url(#logo-grad)" />
+  <!-- A teardrop shape with top-left, top-right, bottom-left rounded (50%), bottom-right sharp (10%) -->
+  <path d="M 16 6 C 21.52 6 26 10.48 26 16 C 26 18.2 24.2 24.2 22 26 C 16.48 26 12 21.52 12 16 C 12 10.48 16 6 16 6 Z" fill="#111111" />
+</svg>
