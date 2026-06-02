@@ -1,0 +1,57 @@
+﻿<USER_REQUEST>
+now for each card do this replace the Foreground Image with these
+---------------------------------
+I see exactly where you are going with this, and it is a brilliant UI choice. Instead of static, heavy screenshot images that slow down your page, you want to build interactive, lightweight "live mockups" using clean frontend code (HTML/CSS/Tailwind).
+
+By displaying mini, styled UI blocks rather than raw pictures, the page will look incredibly modern, load instantly, and feel like a real web application.
+
+Here are the deep, detailed descriptions for each card's interactive code mockup so you can feed them straight to an AI code generator (or your developers):
+
+ðŸŽ¨ Card 1: Perfect Your Concept First (The "Socratic AI" Chat Mockup)
+The Visual Goal: A mini, simplified version of a modern chat workspace reflecting a dynamic interaction with Archi.
+
+Layout Shell: A compact container with rounded corners (rounded-xl), a subtle gray background (bg-slate-50), and a crisp inner shadow.
+
+The Message Stream (Two Bubbles):
+
+Bubble 1 (User): A right-aligned message bubble in dark blue/indigo. Text inside reads: "I want to build a chatbot that reads data directly from uploaded excel sheets."
+
+Bubble 2 (Archi AI): A left-aligned, clean white bubble with an "Archi" logo icon next to it. Text inside reads: "Got it. Let's break that down into 3 core Epics: Data Processing, AI Search Implementation, and System Integration. Ready to generate the features?"
+
+The Interactive Element: Right below the chat stream, add 2 or 3 clickable, rounded chip buttons (rounded-full) that look like quick-reply options:
+
+[âœ¨ Auto-Generate Backlog] (Styled in a subtle brand accent color).
+
+[ðŸ” Refine Requirements].
+
+The Code Prompt Blueprint: "Generate a mini, responsive chat widget using Tailwind CSS. It should feature a clean modern conversation between a user and an AI assistant named Archi. Include micro-copy showing product requirement planning and add two stylized interactive action chips at the bottom."
+
+ðŸ—‚ï¸ Card 2: Automat
+<truncated 1071 bytes>
+ry card component using Tailwind CSS. Include a top header row with micro-badges for modern technical stacks (Next.js, MongoDB), a clear user role badge, crisp bold typography for the requirement sentence, and tiny metadata tags at the bottom."
+
+ðŸš€ Card 3: Production Ready Code (The "DevOps & Deployment Status" Mockup)
+The Visual Goal: A stylized visual summary of an automated, passing CI/CD server pipeline deployment with a safety fallback indicator.
+
+Layout Shell: A terminal-inspired dark mode container (bg-slate-900) or a crisp dashboard widget highlighting automated deployment checks.
+
+Component A (Environment Selector): A minimal tab indicator at the top showing [ Staging ] and [ Production ] with Staging highlighted with a yellow underline or active state indicator.
+
+Component B (The Automated Pipeline Steps): A vertical stack of progress checks with clean icon statuses:
+
+ðŸŸ¢ Pulling latest container image from GHCR... (Text in a light gray/white mix).
+
+ðŸŸ¢ Running container: my-chat-bot--staging on Port 8081...
+
+ðŸŸ¢ Health Check against /api/health: Status 200 OK
+
+Component C (The Safety Badge): A standalone highlight banner at the bottom that states: ðŸ›¡ï¸ Auto-Rollback Active (If unhealthy -> fallback to :rollback).
+
+The Code Prompt Blueprint: "Generate an interactive DevOps pipeline deployment progress tracker component using Tailwind CSS. Use a clean container layout, status check marks with alternating colored indicator lights (green for success), clear typography representing automated server actions, and a distinct highlighted badge emphasizing an automatic fallback mechanism."
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-05-30T15:16:17+04:00.
+</ADDITIONAL_METADATA>
+<USER_SETTINGS_CHANGE>
+The user changed setting `Model Selection` from Gemini 3.5 Flash (High) to Gemini 3.1 Pro (High). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string.
+</USER_SETTINGS_CHANGE>
