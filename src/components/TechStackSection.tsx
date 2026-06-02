@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useInView, AnimatePresence } from 'motion/react';
 import { useLanguage } from '../i18n';
+import techIcon from '../assets/images/tech-icon.png';
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
@@ -220,7 +221,7 @@ export function TechStackSection() {
             transition={{ duration: 0.7, delay: 0.04, ease: [0.16, 1, 0.3, 1] }}
             className="w-9 h-8 flex items-center justify-center overflow-hidden mb-5 self-start ms-0 me-auto"
           >
-            <img src="/src/assets/images/tech-icon.png" alt="Tech Stack Icon" className="w-full h-full object-cover" />
+            <img src={techIcon} alt="Tech Stack Icon" className="w-full h-full object-cover" />
           </motion.div>
 
           {/* Main title */}

@@ -2,6 +2,9 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { useLanguage } from '../i18n';
 import Grainient from './Grainient';
+import icon1 from '../assets/images/icon1.png';
+import icon2 from '../assets/images/icon2.png';
+import icon3 from '../assets/images/icon3.png';
 
 const noiseSvg = `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E")`;
 
@@ -61,7 +64,7 @@ export function IdeaToProduction() {
               <div className="flex items-center gap-2.5">
                 {/* Icon Placeholder: To use your own image, uncomment the <img> tag and set the src path */}
                 <div className="w-7 h-7  flex items-center justify-center overflow-hidden">
-                  <img src="/src/assets/images/icon1.png" alt="Idea Icon" className="w-full h-full object-cover" />
+                  <img src={icon1} alt="Idea Icon" className="w-full h-full object-cover" />
                 </div>
                 <h3 className="text-[24px] font-medium text-slate-900 leading-none" style={{ fontFamily: isRTL ? "'Tajawal', sans-serif" : "'Instrument Serif', serif" }}>
                   {t('itp.card1.title')}
@@ -156,7 +159,7 @@ export function IdeaToProduction() {
               <div className="flex items-center gap-2.5">
                 {/* Icon Placeholder: To use your own image, uncomment the <img> tag and set the src path */}
                 <div className="w-7 h-7  flex items-center justify-center overflow-hidden">
-                  <img src="/src/assets/images/icon2.png" alt="Idea Icon" className="w-full h-full object-cover" />
+                  <img src={icon2} alt="Idea Icon" className="w-full h-full object-cover" />
                 </div>
                 <h3 className="text-[24px] font-medium text-slate-900 leading-none" style={{ fontFamily: isRTL ? "'Tajawal', sans-serif" : "'Instrument Serif', serif" }}>
                   {t('itp.card2.title')}
@@ -239,7 +242,7 @@ export function IdeaToProduction() {
               <div className="flex items-center gap-2.5">
                 {/* Icon Placeholder: To use your own image, uncomment the <img> tag and set the src path */}
                 <div className="w-7 h-7  flex items-center justify-center overflow-hidden">
-                  <img src="/src/assets/images/icon3.png" alt="Idea Icon" className="w-full h-full object-cover" />
+                  <img src={icon3} alt="Idea Icon" className="w-full h-full object-cover" />
                 </div>
                 <h3 className="text-[24px] font-medium text-slate-900 leading-none" style={{ fontFamily: isRTL ? "'Tajawal', sans-serif" : "'Instrument Serif', serif" }}>
                   {t('itp.card3.title')}
