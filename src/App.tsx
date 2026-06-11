@@ -194,7 +194,7 @@ function AppContent() {
         cursor={
           <div className="relative flex items-center justify-center w-8 h-8">
             {/* Outer ring */}
-            <div className="absolute inset-0 rounded-full border border-[#38bdf8]" />
+            <div className={`absolute inset-0 rounded-full border border-[#38bdf8] transition-opacity duration-300 ${isHovered ? 'opacity-0' : 'opacity-100'}`} />
             {/* Inner solid dot */}
             <div className="w-2.5 h-2.5 rounded-full bg-[#1a1a1a]" />
           </div>
@@ -258,8 +258,6 @@ function AppContent() {
               transformOrigin: 'center center',
               transition: 'transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)',
               zIndex: 10,
-              border: '2px solid rgba(56, 189, 248, 0.5)',
-              boxShadow: '0 0 32px rgba(56, 189, 248, 0.35)'
             }}
           >
             <img
@@ -438,7 +436,7 @@ function AppContent() {
           </main>
         </div>
         {/* Sticky Tech Stack + Stats Wrapper (Slide over effect) */}
-        <div className="relative md:sticky md:top-0 md:h-[100dvh] w-full overflow-hidden md:z-10 bg-[#f5f4f2] z-20">
+        <div className="relative md:sticky md:top-0 md:min-h-[100dvh] w-full md:z-10 bg-[#f5f4f2] z-20">
           <TechStackSection />
         </div>
 
