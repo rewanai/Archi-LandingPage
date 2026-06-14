@@ -15,6 +15,7 @@ import { HowItWorks } from './components/HowItWorks';
 import { IdeaToProduction } from './components/IdeaToProduction';
 import { CoreFeatures } from './components/CoreFeatures';
 import { Footer37 } from './components/Footer37';
+import { ContactSection } from './components/ContactSection';
 import { WhatIsArchi } from './components/WhatIsArchi';
 import { AppleLoader } from './components/AppleLoader';
 import LogoMarquee from './components/LogoMarquee';
@@ -134,6 +135,7 @@ function AppContent() {
       wheelMultiplier: 1.0,
       touchMultiplier: 1.5,
     });
+    (window as any).lenis = lenis;
 
     let rafId: number;
     function raf(time: number) {
@@ -145,6 +147,7 @@ function AppContent() {
     return () => {
       cancelAnimationFrame(rafId);
       lenis.destroy();
+      delete (window as any).lenis;
     };
   }, []);
 
@@ -221,8 +224,8 @@ function AppContent() {
         }}
         className="relative font-sans text-slate-900 selection:bg-black selection:text-white bg-[#ffffff]"
       >
-        <FloatingNav isDarkMode={isCoreFeaturesActive || isFooterActive} isVisible={!isDarkSection} />
-        <TechFrame key={`frame-${animationKey}`} isVisible={!isDarkSection} isDark={isCoreFeaturesActive || isFooterActive} />
+        <FloatingNav isDarkMode={isCoreFeaturesActive} isVisible={!isDarkSection} />
+        <TechFrame key={`frame-${animationKey}`} isVisible={!isDarkSection} isDark={isCoreFeaturesActive} />
 
         {/* Hero Wrapper (Regular scroll) */}
         <div ref={heroRef} className="relative min-h-[100dvh] md:h-[100dvh] w-full overflow-hidden md:overflow-visible flex flex-col justify-center py-12 md:py-0">
@@ -305,16 +308,34 @@ function AppContent() {
             <div className={`flex flex-col lg:flex-row justify-between items-center lg:items-start text-center lg:text-start w-full mt-16 md:mt-16 lg:mt-8 mix-blend-multiply relative z-10 gap-8`}>
               <div className="flex flex-col items-center lg:items-start w-full lg:max-w-[70%]">
                 {/* Top border pill */}
-                <motion.div
+                {/* Top border pill link */}
+                <motion.a
+                  href="https://rewan.ai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  layout
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, ease: 'easeOut' }}
-                  className="inline-flex items-center gap-2 bg-[#ffffff] border border-[#bae6fd] rounded-full py-1.5 px-3.5 mb-8 w-fit shadow-sm"
+                  whileHover={{ scale: 1.03 }}
+                  className="group inline-flex items-center gap-2.5 bg-[#ffffff]/95 hover:bg-[#ffffff] border border-[#bae6fd] hover:border-[#38bdf8] rounded-full py-1.5 px-3.5 mb-8 w-fit shadow-sm cursor-pointer transition-all duration-300 relative overflow-hidden select-none"
                 >
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#38bdf8]"></div>
-                  <span className="text-[13px] font-medium text-[#38bdf8] tracking-wide pr-1">{t('hero.badge')}</span>
-                  <ChevronLeft className="w-3 h-3 text-slate-400 stroke-2" />
-                </motion.div>
+                  <motion.div layout className="w-1.5 h-1.5 rounded-full bg-[#38bdf8] shrink-0" />
+                  
+                  <span className="relative flex items-center overflow-hidden h-[18px]">
+                    {/* Default badge text */}
+                    <span className="text-[13px] font-medium text-[#38bdf8] tracking-wide transition-all duration-300 transform group-hover:-translate-y-6 group-hover:opacity-0 block">
+                      {t('hero.badge')}
+                    </span>
+                    
+                    {/* Hover CTA text */}
+                    <span className="absolute inset-0 text-[13px] font-semibold text-[#0ea5e9] tracking-wide transition-all duration-300 transform translate-y-6 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 flex items-center whitespace-nowrap">
+                      {isRTL ? 'زيارة ريوان' : 'Visit Rewan'}
+                    </span>
+                  </span>
+
+                  <ChevronLeft className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#38bdf8] stroke-2 transition-transform duration-300 group-hover:-translate-x-1.5" />
+                </motion.a>
 
                 <h1 className={`${isRTL ? 'text-[2.5rem] sm:text-[3.7rem] md:text-[4.2rem] lg:text-[5.9rem] xl:text-[5.9rem]' : 'text-[2.7rem] sm:text-[4.0rem] md:text-[4.5rem] lg:text-[5.7rem] xl:text-[5.7rem]'} font-[100] text-[#111111] leading-[1.03] tracking-[-0.02em]`}>
                   <BlurredWord delay={0}>{renderHeroText(t('hero.h1.line1'))}</BlurredWord>{' '}
@@ -432,44 +453,48 @@ function AppContent() {
                 </motion.div>
               </div>
             </div>
-
           </main>
         </div>
         {/* Sticky Tech Stack + Stats Wrapper (Slide over effect) */}
-        <div className="relative md:sticky md:top-0 md:min-h-[100dvh] w-full md:z-10 bg-[#f5f4f2] z-20">
+        <div id="tech-stack" className="relative md:sticky md:top-0 md:min-h-[100dvh] w-full md:z-10 bg-[#f5f4f2] z-20">
           <TechStackSection />
         </div>
 
 
-        <div ref={darkSectionRef} className="w-full relative z-20">
+        <div id="process" ref={darkSectionRef} className="w-full relative z-20">
           <ProcessSection />
         </div>
 
-        <div className="w-full relative z-20 bg-white">
+        <div id="idea-to-production" className="w-full relative z-20 bg-white">
           <IdeaToProduction />
         </div>
 
-        <div className="w-full relative z-20 bg-white">
-          <HowItWorks />
-        </div>
-
-        <div className="w-full relative z-20 bg-[#f5f4f2]">
+        <div id="what-is-archi" className="w-full relative z-20 bg-[#f5f4f2]">
           <WhatIsArchi />
         </div>
 
-        <div ref={coreFeaturesRef} className="w-full relative z-20">
+        <div id="how-it-works" className="w-full relative z-20 bg-white">
+          <HowItWorks />
+        </div>
+
+        <div id="core-features" ref={coreFeaturesRef} className="w-full relative z-20">
           <CoreFeatures />
         </div>
 
 
 
-        <div className="w-full relative z-20 bg-[#f5f4f2]">
+
+        <div id="services-accordion" className="w-full relative z-20 bg-[#f5f4f2]">
           <ServicesAccordion />
         </div>
 
-        <div ref={footerRef} className="w-full relative z-20">
+        <div id="contact-section" className="w-full relative z-20">
+          <ContactSection />
+        </div>
+
+        <div id="footer" ref={footerRef} className="w-full relative z-20">
           <Footer37
-            className="relative z-20 bg-[#1d1b1a]"
+            className="relative z-20 bg-white"
           />
         </div>
 

@@ -77,7 +77,7 @@ export function ServicesAccordion() {
   const { isRTL } = useLanguage();
 
   return (
-    <section dir={isRTL ? 'rtl' : 'ltr'} className="w-full bg-[#f5f4f2] py-16 md:py-24 relative overflow-hidden">
+    <section dir={isRTL ? 'rtl' : 'ltr'} className="w-full bg-white py-16 md:py-24 relative overflow-hidden">
       {/* Subtle background pattern */}
       <div
         className="absolute inset-0 opacity-30 pointer-events-none"
@@ -96,7 +96,7 @@ export function ServicesAccordion() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-400"
+              className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#38bdf8]"
             >
               {isRTL ? 'الخدمات' : 'Services'}
             </motion.span>
@@ -111,13 +111,13 @@ export function ServicesAccordion() {
                 <>
                   رعاية خبيرة
                   <br />
-                  <span className="text-slate-400 font-[200]">لكل فكرة</span>
+                  <span className="text-[#38bdf8] font-[200]">لكل فكرة</span>
                 </>
               ) : (
                 <>
                   Expert care
                   <br />
-                  <span className="text-slate-400 font-[200]">for every idea</span>
+                  <span className="text-[#38bdf8] font-[200]">for every idea</span>
                 </>
               )}
             </motion.h2>
@@ -201,14 +201,6 @@ export function ServicesAccordion() {
                                 <p className="text-[13px] md:text-[14px] text-white/65 leading-[1.75] font-light">
                                   {isRTL ? service.descriptionAr : service.description}
                                 </p>
-                                <div className="flex items-center gap-2">
-                                  <span className="text-[11px] text-white/40 font-light">
-                                    {isRTL ? 'السعر:' : 'Price:'}
-                                  </span>
-                                  <span className="text-[12px] text-[#38bdf8] font-mono">
-                                    {isRTL ? service.priceAr : service.price}
-                                  </span>
-                                </div>
                               </div>
 
                               {/* CTA button */}
@@ -240,7 +232,7 @@ export function ServicesAccordion() {
                           animate={{ opacity: 1 }}
                           exit={{ opacity: 0 }}
                           transition={{ duration: 0.2 }}
-                          className="hidden sm:inline-flex text-[10px] font-medium tracking-wider text-slate-500 bg-slate-100 px-2.5 py-1 rounded-full"
+                          className="hidden sm:inline-flex text-[10px] font-medium tracking-wider text-[#0ea5e9] bg-sky-50/70 px-2.5 py-1 rounded-full"
                         >
                           {isRTL ? service.tagAr : service.tag}
                         </motion.span>

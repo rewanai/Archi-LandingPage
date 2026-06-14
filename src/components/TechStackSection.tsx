@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { motion, useInView } from 'motion/react';
 import { useLanguage } from '../i18n';
 import techIcon from '../assets/images/tech-icon.png';
+import { ArchiLogo } from './ui/ArchiLogo';
 
 // ─── Stat card data ───────────────────────────────────────────────────────────
 
@@ -91,7 +92,7 @@ export const SchematicDiagram: React.FC = () => {
         const parentWidth = Math.min(1200, width);
         const padding = width < 1024 ? 32 : 48;
         const targetWidth = parentWidth - padding;
-        const scaleW = targetWidth / 800;
+        const scaleW = targetWidth / 1000;
 
         // Compact design: cap scale at 1.0 to preserve native sizes, ensuring it remains small and readable
         const newScale = Math.min(1.0, scaleW);
@@ -114,20 +115,20 @@ export const SchematicDiagram: React.FC = () => {
 
   // Labels structure representing software nodes (shifted coordinates to eliminate wasted vertical spacing)
   const labels = [
-    { id: 'customer', textKey: 'schematic.customer', x: 180, y: 30 },
-    { id: 'code', textKey: 'schematic.code', x: 620, y: 30 },
-    { id: 'bug', textKey: 'schematic.bug', x: 150, y: 210 },
-    { id: 'issues', textKey: 'schematic.issues', x: 270, y: 210 },
-    { id: 'ticket', textKey: 'schematic.ticket', x: 530, y: 210 },
-    { id: 'pr', textKey: 'schematic.pr', x: 650, y: 210 },
+    { id: 'customer', textKey: 'schematic.customer', x: 230, y: 40 },
+    { id: 'code', textKey: 'schematic.code', x: 770, y: 40 },
+    { id: 'bug', textKey: 'schematic.bug', x: 180, y: 260 },
+    { id: 'issues', textKey: 'schematic.issues', x: 340, y: 260 },
+    { id: 'ticket', textKey: 'schematic.ticket', x: 660, y: 260 },
+    { id: 'pr', textKey: 'schematic.pr', x: 820, y: 260 },
   ];
 
   // Particle path animations representing data packets flowing
   const dataPackets = [
-    { id: 'tp-l', path: 'M 400 65 L 400 50 L 350 30 L 75 30', delay: 0 },
-    { id: 'tp-r', path: 'M 400 65 L 400 50 L 450 30 L 725 30', delay: 1.5 },
-    { id: 'bm-l', path: 'M 400 175 L 400 190 L 350 210 L 75 210', delay: 0.75 },
-    { id: 'bm-r', path: 'M 400 175 L 400 190 L 450 210 L 725 210', delay: 2.2 },
+    { id: 'tp-l', path: 'M 500 80 L 500 60 L 440 40 L 100 40', delay: 0 },
+    { id: 'tp-r', path: 'M 500 80 L 500 60 L 560 40 L 900 40', delay: 1.5 },
+    { id: 'bm-l', path: 'M 500 220 L 500 240 L 440 260 L 100 260', delay: 0.75 },
+    { id: 'bm-r', path: 'M 500 220 L 500 240 L 560 260 L 900 260', delay: 2.2 },
   ];
 
   if (isMobile) {
@@ -297,16 +298,9 @@ export const SchematicDiagram: React.FC = () => {
               }}
             >
               <div className="animate-[spin_8s_linear_infinite] mb-1">
-                <svg viewBox="0 0 100 100" className="w-[42px] h-[42px] text-zinc-900 fill-current" xmlns="http://www.w3.org/2000/svg">
-                  <g fill="currentColor">
-                    <rect x="41" y="16" width="18" height="68" rx="9" />
-                    <rect x="16" y="41" width="68" height="18" rx="9" />
-                    <rect x="29" y="29" width="42" height="42" rx="10" />
-                  </g>
-                  <circle cx="50" cy="50" r="10" fill="#ffffff" />
-                </svg>
+                <ArchiLogo className="w-[52px] h-[52px]" isDark={false} />
               </div>
-              <div className="text-[8px] font-mono tracking-widest text-[#38bdf8]">
+              <div className="text-[10px] font-mono tracking-widest text-[#38bdf8]">
                 ARCHI.A1
               </div>
             </motion.div>
@@ -318,7 +312,7 @@ export const SchematicDiagram: React.FC = () => {
             return (
               <button
                 key={lbl.id}
-                className={`absolute flex items-center justify-center h-8 px-3.5 min-w-[125px] rounded-full text-[11px] font-mono tracking-wider transition-all duration-300 z-30 border whitespace-nowrap ${isActive
+                className={`absolute flex items-center justify-center h-10 px-4 min-w-[140px] rounded-full text-[13px] font-mono tracking-wider transition-all duration-300 z-30 border whitespace-nowrap ${isActive
                   ? 'bg-zinc-900 border-zinc-900 text-[#f4f1eb] shadow-md shadow-zinc-900/15 scale-[1.04]'
                   : 'bg-white/95 border-[#38bdf8]/20 text-slate-800 backdrop-blur-[2px] shadow-[0_2px_8px_rgba(56,189,248,0.02)]'
                   }`}
@@ -343,16 +337,16 @@ export const SchematicDiagram: React.FC = () => {
     <div
       ref={containerRef}
       className="w-full flex items-center justify-center select-none overflow-hidden"
-      style={{ height: `${240 * scale}px` }}
+      style={{ height: `${300 * scale}px` }}
       id="schematic-container"
       dir="ltr"
     >
       <div
-        className="relative w-[800px] h-[240px] shrink-0 transition-transform duration-300"
+        className="relative w-[1000px] h-[300px] shrink-0 transition-transform duration-300"
         style={{ transform: `scale(${scale})` }}
       >
         {/* Schematic Circuit Lines (drawn beautifully in SVG) */}
-        <svg viewBox="0 0 800 240" className="absolute inset-0 w-full h-full pointer-events-none z-10">
+        <svg viewBox="0 0 1000 300" className="absolute inset-0 w-full h-full pointer-events-none z-10">
           <defs>
             {/* Soft shadow for connecting pins */}
             <filter id="soft-glow" x="-20%" y="-20%" width="140%" height="140%">
@@ -364,12 +358,12 @@ export const SchematicDiagram: React.FC = () => {
           {/* Dynamic circuit wires */}
           <g stroke="rgba(56, 189, 248, 0.16)" strokeWidth="1.2" fill="none">
             {/* Top center split to Customer and Code */}
-            <path d="M 400 65 L 400 50 M 400 50 L 350 30 L 75 30" />
-            <path d="M 400 50 L 450 30 L 725 30" />
+            <path d="M 500 80 L 500 60 M 500 60 L 440 40 L 100 40" />
+            <path d="M 500 60 L 560 40 L 900 40" />
 
             {/* Bottom center split to Issues and Code labels */}
-            <path d="M 400 175 L 400 190 M 400 190 L 350 210 L 75 210" />
-            <path d="M 400 190 L 450 210 L 725 210" />
+            <path d="M 500 220 L 500 240 M 500 240 L 440 260 L 100 260" />
+            <path d="M 500 240 L 560 260 L 900 260" />
           </g>
 
           {/* Animating Data Particles flowing through the pipeline */}
@@ -410,32 +404,31 @@ export const SchematicDiagram: React.FC = () => {
             </circle>
           ))}
 
-          {/* 1. Static Square Nodes exactly in accordance with image */}
           {/* Top Left nodes */}
-          <rect x="347" y="27" width="6" height="6" fill="#1c1917" rx="1" />
-          <rect x="72" y="27" width="6" height="6" fill="#1c1917" rx="1" />
+          <rect x="436" y="36" width="8" height="8" fill="#1c1917" rx="1.5" />
+          <rect x="96" y="36" width="8" height="8" fill="#1c1917" rx="1.5" />
 
           {/* Top Right nodes */}
-          <rect x="722" y="27" width="6" height="6" fill="#1c1917" rx="1" />
-          <rect x="447" y="27" width="6" height="6" fill="#1c1917" rx="1" />
+          <rect x="896" y="36" width="8" height="8" fill="#1c1917" rx="1.5" />
+          <rect x="556" y="36" width="8" height="8" fill="#1c1917" rx="1.5" />
 
           {/* Bottom Left nodes */}
-          <rect x="347" y="207" width="6" height="6" fill="#1c1917" rx="1" />
-          <rect x="72" y="207" width="6" height="6" fill="#1c1917" rx="1" />
+          <rect x="436" y="256" width="8" height="8" fill="#1c1917" rx="1.5" />
+          <rect x="96" y="256" width="8" height="8" fill="#1c1917" rx="1.5" />
 
           {/* Bottom Right nodes */}
-          <rect x="722" y="207" width="6" height="6" fill="#1c1917" rx="1" />
-          <rect x="447" y="207" width="6" height="6" fill="#1c1917" rx="1" />
+          <rect x="896" y="256" width="8" height="8" fill="#1c1917" rx="1.5" />
+          <rect x="556" y="256" width="8" height="8" fill="#1c1917" rx="1.5" />
         </svg>
 
         {/* Central White Textured Card holding the processor Logo */}
         <div
-          className="absolute left-[345px] top-[65px] w-[110px] h-[110px] flex items-center justify-center z-20"
+          className="absolute left-[430px] top-[80px] w-[140px] h-[140px] flex items-center justify-center z-20"
           id="central-processor-anchor"
         >
           {/* Outermost concentric frame with fine dotted outline */}
           <motion.div 
-            className="absolute inset-[-8px] border border-dashed border-[#38bdf8]/20 rounded-[1.2rem] pointer-events-none"
+            className="absolute inset-[-10px] border border-dashed border-[#38bdf8]/20 rounded-[1.4rem] pointer-events-none"
             animate={{
               scale: [1, 1.04, 1],
               opacity: [0.6, 1, 0.6]
@@ -449,7 +442,7 @@ export const SchematicDiagram: React.FC = () => {
 
           {/* Second square wireframe */}
           <motion.div 
-            className="absolute inset-[-4px] border border-[#38bdf8]/10 rounded-[1rem] pointer-events-none"
+            className="absolute inset-[-5px] border border-[#38bdf8]/10 rounded-[1.2rem] pointer-events-none"
             animate={{
               scale: [1, 1.02, 1],
               opacity: [0.4, 0.8, 0.4]
@@ -464,7 +457,7 @@ export const SchematicDiagram: React.FC = () => {
 
           {/* Ripple waves for constant pulsing telemetry aura */}
           <motion.div
-            className="absolute inset-0 border border-[#38bdf8]/30 rounded-[0.8rem] pointer-events-none"
+            className="absolute inset-0 border border-[#38bdf8]/30 rounded-[1rem] pointer-events-none"
             initial={{ scale: 1, opacity: 0 }}
             animate={{
               scale: [1, 1.35],
@@ -477,7 +470,7 @@ export const SchematicDiagram: React.FC = () => {
             }}
           />
           <motion.div
-            className="absolute inset-0 border border-[#38bdf8]/30 rounded-[0.8rem] pointer-events-none"
+            className="absolute inset-0 border border-[#38bdf8]/30 rounded-[1rem] pointer-events-none"
             initial={{ scale: 1, opacity: 0 }}
             animate={{
               scale: [1, 1.35],
@@ -493,13 +486,13 @@ export const SchematicDiagram: React.FC = () => {
 
           {/* Central Rounded Box Container */}
           <motion.div
-            className="w-full h-full bg-white border border-[#38bdf8]/20 rounded-[0.8rem] flex items-center justify-center p-3 relative group cursor-pointer"
+            className="w-full h-full bg-white border border-[#38bdf8]/20 rounded-[1rem] flex items-center justify-center p-4 relative group cursor-pointer"
             animate={{
               scale: [1, 1.03, 1],
               boxShadow: [
-                "0 0 15px rgba(56,189,248,0.08), 0 0 0 1px rgba(56,189,248,0.15)",
-                "0 0 25px rgba(56,189,248,0.22), 0 0 0 2px rgba(56,189,248,0.25)",
-                "0 0 15px rgba(56,189,248,0.08), 0 0 0 1px rgba(56,189,248,0.15)"
+                "0 0 20px rgba(56,189,248,0.1), 0 0 0 1px rgba(56,189,248,0.18)",
+                "0 0 30px rgba(56,189,248,0.25), 0 0 0 2px rgba(56,189,248,0.28)",
+                "0 0 20px rgba(56,189,248,0.1), 0 0 0 1px rgba(56,189,248,0.18)"
               ]
             }}
             transition={{
@@ -511,26 +504,15 @@ export const SchematicDiagram: React.FC = () => {
             whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
           >
             {/* Fine internal shadow layer */}
-            <div className="absolute inset-0.5 rounded-[0.7rem] border border-white/60 pointer-events-none" />
+            <div className="absolute inset-0.5 rounded-[0.9rem] border border-white/60 pointer-events-none" />
 
             {/* Solid elegant PlayerZero clover cross logo */}
             <div className="transition-transform duration-700 ease-out group-hover:rotate-90">
-              <svg viewBox="0 0 100 100" className="w-[44px] h-[44px] text-zinc-900 fill-current" xmlns="http://www.w3.org/2000/svg">
-                {/* Visual rendering of the clover-like cross */}
-                <g fill="currentColor">
-                  {/* Cardinal pill arms */}
-                  <rect x="41" y="16" width="18" height="68" rx="9" />
-                  <rect x="16" y="41" width="68" height="18" rx="9" />
-                  {/* Center squircle core */}
-                  <rect x="29" y="29" width="42" height="42" rx="10" />
-                </g>
-                {/* Central hollow circle matching container background */}
-                <circle cx="50" cy="50" r="10" fill="#ffffff" />
-              </svg>
+              <ArchiLogo className="w-[60px] h-[60px]" isDark={false} />
             </div>
 
             {/* Little sub-details for craft look */}
-            <div className="absolute bottom-1 text-[7px] font-mono tracking-widest text-[#38bdf8]/60">
+            <div className="absolute bottom-2 text-[10px] font-mono tracking-widest text-[#38bdf8]/60">
               ARCHI.A1
             </div>
           </motion.div>
@@ -542,7 +524,7 @@ export const SchematicDiagram: React.FC = () => {
           return (
             <button
               key={lbl.id}
-              className={`absolute flex items-center justify-center h-[25px] px-3.5 min-w-[85px] rounded-full text-[9.5px] font-mono tracking-wider transition-all duration-300 z-30 border whitespace-nowrap ${isLabelHovered
+              className={`absolute flex items-center justify-center h-[34px] px-5 min-w-[110px] rounded-full text-[12px] font-mono tracking-wider transition-all duration-300 z-30 border whitespace-nowrap ${isLabelHovered
                 ? 'bg-zinc-900 border-zinc-900 text-[#f4f1eb] shadow-md shadow-zinc-900/10 -translate-y-[1px]'
                 : 'bg-white/90 border-[#38bdf8]/20 text-slate-800 backdrop-blur-[2px] hover:border-[#38bdf8] hover:text-[#38bdf8] shadow-[0_2px_8px_rgba(56,189,248,0.03)]'
                 }`}

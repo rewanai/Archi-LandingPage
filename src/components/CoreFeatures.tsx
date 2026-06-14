@@ -781,9 +781,9 @@ export function CoreFeatures() {
 
                                          {/* Editor Document Content */}
                                          <div className="flex-1 overflow-y-auto no-scrollbar p-4 font-sans text-start select-text leading-relaxed text-zinc-600">
-                                            <h1 className="text-[12px] font-bold text-zinc-800 border-b border-zinc-200 pb-1.5 mb-2.5">
+                                            <div className="text-[12px] font-bold text-zinc-800 border-b border-zinc-200 pb-1.5 mb-2.5">
                                                {t('hiw.compilation.title')}
-                                            </h1>
+                                            </div>
 
                                             {/* Paths & Description List */}
                                             <div className="space-y-1.5 mb-4 text-[9.5px]">
@@ -807,7 +807,7 @@ export function CoreFeatures() {
 
                                             {/* Tech details */}
                                             <div className="text-[9.5px] mb-3">
-                                               <h2 className="font-bold text-zinc-800 text-[10px] mb-1">Backend (Express 5 + TypeScript)</h2>
+                                               <div className="font-bold text-zinc-800 text-[10px] mb-1">Backend (Express 5 + TypeScript)</div>
                                                <ul className="list-disc pl-4 space-y-0.5 text-zinc-500 text-start">
                                                   <li>REST API at <span className="font-mono text-sky-650">/api/tests</span>, <span className="font-mono text-sky-650">/api/bugs</span>, <span className="font-mono text-sky-650">/api/tasks</span></li>
                                                   <li>Auth middleware (JWT from Supabase)</li>
@@ -817,7 +817,7 @@ export function CoreFeatures() {
 
                                             {/* Getting started */}
                                             <div className="text-[9.5px]">
-                                               <h2 className="font-bold text-zinc-800 text-[10px] mb-1">To Start</h2>
+                                               <div className="font-bold text-zinc-800 text-[10px] mb-1">To Start</div>
                                                <ol className="list-decimal pl-4 space-y-0.5 text-zinc-500 font-mono text-[9px] text-start">
                                                   <li>Create a Supabase project, run <span className="text-emerald-705">supabase/migration.sql</span></li>
                                                   <li>Set Supabase credentials in <span className="text-zinc-500">frontend/.env.local</span> and <span className="text-zinc-500">backend/.env</span></li>

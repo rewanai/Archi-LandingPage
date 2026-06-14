@@ -2,6 +2,127 @@ import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Brain, Cpu, ArrowRight } from 'lucide-react';
 import { useLanguage } from '../i18n';
+import { useEffect } from 'react';
+
+const DevEditorMockup: React.FC = () => {
+  const [typedCode, setTypedCode] = useState('');
+  const targetCode = `VALUES ($1, $2) ON CONFLICT DO NOTHING`;
+
+  useEffect(() => {
+    let index = 0;
+    let timeoutId: any;
+
+    const type = () => {
+      if (index <= targetCode.length) {
+        setTypedCode(targetCode.slice(0, index));
+        index++;
+        timeoutId = setTimeout(type, 45);
+      } else {
+        timeoutId = setTimeout(() => {
+          setTypedCode('');
+          index = 0;
+          timeoutId = setTimeout(type, 1000); // 1 second delay before typing starts again
+        }, 4000); // 4 seconds delay showing full text
+      }
+    };
+
+    type();
+    return () => clearTimeout(timeoutId);
+  }, []);
+
+  return (
+    <div className="flex flex-col h-full justify-between text-start font-mono bg-[#05070f] text-slate-355 p-2.5 rounded-xl border border-slate-900 shadow-md overflow-hidden select-none" dir="ltr">
+      {/* Window Controls */}
+      <div className="flex items-center justify-between border-b border-slate-900/60 pb-1.5 mb-1.5 text-[7px] text-slate-500 shrink-0">
+        <div className="flex items-center gap-1.5">
+          <span className="w-1.5 h-1.5 rounded-full bg-red-500/80" />
+          <span className="w-1.5 h-1.5 rounded-full bg-yellow-500/80" />
+          <span className="w-1.5 h-1.5 rounded-full bg-green-500/80" />
+        </div>
+        <span className="font-mono text-slate-600 text-[6.5px]">Archi Dev Studio — Header.tsx</span>
+      </div>
+
+      {/* Main Panel Row */}
+      <div className="flex-1 flex overflow-hidden w-full text-[7.5px] font-sans">
+        {/* Left Sidebar */}
+        <div className="w-[72px] bg-[#090d16] border-r border-slate-900/60 flex flex-col p-1.5 shrink-0 select-none text-[6.5px]">
+          <div className="text-[5.5px] text-slate-500 font-bold uppercase tracking-wider mb-2 pr-1">
+            PROJECT FILES
+          </div>
+          <div className="space-y-1">
+            <div className="flex items-center justify-between p-1 rounded bg-[#38bdf8]/10 text-[#38bdf8] font-medium border border-[#38bdf8]/10">
+              <div className="flex items-center gap-1 min-w-0">
+                <span className="text-[7.5px] shrink-0">📄</span>
+                <span className="truncate">Header.tsx</span>
+              </div>
+              <span className="w-1 h-1 rounded-full bg-[#38bdf8] animate-pulse shrink-0" />
+            </div>
+            <div className="flex items-center justify-between p-1 rounded text-slate-400 hover:text-slate-200">
+              <div className="flex items-center gap-1 min-w-0">
+                <span className="text-[7.5px] text-slate-500 shrink-0">🗄️</span>
+                <span className="truncate font-light">schema.sql</span>
+              </div>
+              <span className="w-1 h-1 rounded-full bg-[#38bdf8]/50 shrink-0" />
+            </div>
+            <div className="flex items-center justify-between p-1 rounded text-slate-400 hover:text-slate-200">
+              <div className="flex items-center gap-1 min-w-0">
+                <span className="text-[7.5px] text-slate-500 shrink-0">📄</span>
+                <span className="truncate font-light">App.tsx</span>
+              </div>
+              <span className="w-1 h-1 rounded-full bg-[#38bdf8]/50 shrink-0" />
+            </div>
+          </div>
+        </div>
+
+        {/* Main Editor */}
+        <div className="flex-1 flex flex-col bg-[#05070f] overflow-hidden pl-1">
+          {/* Editor Tab Bar */}
+          <div className="bg-[#090d16] border-b border-slate-900/60 flex items-center px-2 py-1 gap-1.5 text-[6.5px] shrink-0">
+            <div className="bg-[#05070f] border-t border-x border-slate-900/40 text-slate-200 px-2 py-0.5 rounded-t-md flex items-center gap-1 font-medium">
+              <span>Header.tsx</span>
+              <span className="text-slate-600 font-bold text-[5px]">x</span>
+            </div>
+            <div className="text-slate-500 px-2 py-0.5 hover:text-slate-300 cursor-pointer font-light">
+              schema.sql
+            </div>
+          </div>
+
+          {/* Editor Content Area */}
+          <div className="flex-1 p-2 font-mono overflow-y-auto leading-[1.3] whitespace-pre text-slate-400 text-[7px]">
+            {/* Syntax Highlighted React/TSX & SQL Blend */}
+            <span className="text-slate-500 font-light">// AI: Optimizing database schema & mapping API...</span>
+            <br />
+            <span className="text-purple-400">const</span> syncUser = <span className="text-blue-400">async</span> (u: User) =&gt; {"{"}
+            <br />
+            {"  "}await db.execute(
+            <br />
+            {"    "}<span className="text-amber-300">`INSERT INTO users (id, email)</span>
+            <br />
+            {/* Active code generation highlighted area */}
+            <div className="bg-[#38bdf8]/10 border-l-2 border-[#38bdf8] my-0.5 py-0.5 pl-1.5 pr-1 text-[#38bdf8] font-bold h-3.5 flex items-center whitespace-pre shrink-0">
+              {"    "}{typedCode}
+              <span className="w-[3px] h-[9px] bg-[#38bdf8] animate-pulse ml-0.5 shrink-0" />
+            </div>
+            {"  `"}
+            <br />
+            {"  "});
+            <br />
+            {"};"}
+          </div>
+        </div>
+      </div>
+
+      {/* Editor Status Bar */}
+      <div className="mt-1.5 pt-1.5 border-t border-slate-900/80 flex items-center justify-between text-[6.5px] text-slate-500 shrink-0">
+        <span>TypeScript TSX</span>
+        <span className="text-[#38bdf8] flex items-center gap-1 font-bold">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#38bdf8] animate-ping" />
+          AUTONOMOUS WRITING
+        </span>
+      </div>
+    </div>
+  );
+};
 
 export function WhatIsArchi() {
   const { isRTL } = useLanguage();
@@ -554,41 +675,7 @@ export function WhatIsArchi() {
   const renderDevHiFi = (id: number, isRTL: boolean) => {
     switch (id) {
       case 1: // API Sync & Compiler console
-        return (
-          <div className="flex flex-col h-full justify-between text-start font-mono bg-slate-950 text-slate-355 p-3.5 rounded-xl border border-slate-900 shadow-md" dir="ltr">
-            <div className="flex items-center justify-between border-b border-slate-900 pb-2 mb-2 text-[7px] text-slate-500">
-              <div className="flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-red-500/80" />
-                <span className="w-1.5 h-1.5 rounded-full bg-yellow-500/80" />
-                <span className="w-1.5 h-1.5 rounded-full bg-green-500/80" />
-              </div>
-              <span className="font-mono text-slate-600">archi_assembler.log</span>
-            </div>
-            <div className="space-y-1.5 overflow-y-auto max-h-[115px] text-[7.5px] leading-relaxed font-light">
-              <div className="text-slate-500">// Deploying secure database model...</div>
-              <div className="flex items-center justify-between bg-slate-900/40 px-2 py-1 rounded border border-slate-900/60">
-                <span className="text-[#38bdf8]">POSTGRESQL_POOL</span>
-                <span className="text-emerald-400 font-bold">ACTIVE_CONNECTED</span>
-              </div>
-              <div className="text-slate-500 mt-1">// Mapping endpoints logic...</div>
-              <div className="text-slate-400 flex items-center gap-1">
-                <span className="text-[#38bdf8] font-bold">GET</span>
-                <span>/api/v1/vendors - Dynamic query compilation</span>
-              </div>
-              <div className="text-slate-400 flex items-center gap-1">
-                <span className="text-emerald-400 font-bold">OK</span>
-                <span>200 Success in 14ms (compiled autonomously)</span>
-              </div>
-            </div>
-            <div className="mt-2 pt-2 border-t border-slate-900/80 flex items-center justify-between text-[7px] text-slate-500">
-              <span>Vite Bundler v6.4.2</span>
-              <span className="text-[#38bdf8] flex items-center gap-1 font-bold">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#38bdf8] animate-ping" />
-                COMPILED
-              </span>
-            </div>
-          </div>
-        );
+        return <DevEditorMockup />;
       case 2: // Secure shield / Oman Compliance matrix
         return (
           <div className="flex flex-col h-full justify-between text-start text-[9px] font-sans" dir={isRTL ? 'rtl' : 'ltr'}>
@@ -688,6 +775,7 @@ export function WhatIsArchi() {
           return (
             <div
               key={panel.id}
+              id={panel.id === 'business' ? 'archi-business' : 'archi-dev'}
               className="relative flex flex-col p-6 md:p-10 overflow-hidden cursor-default border border-[#d1cfc9] rounded-2xl bg-[#ffffff] shadow-xs w-full"
             >
               {/* Card Header Row */}

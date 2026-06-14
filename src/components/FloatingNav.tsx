@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Twitter, Instagram, Linkedin, Youtube, Zap, Globe } from 'lucide-react';
+import { Globe } from 'lucide-react';
 import { BorderBeam } from './ui/border-beam';
 import { useLanguage } from '../i18n';
+import { ArchiLogo } from './ui/ArchiLogo';
 
 export function FloatingNav({ isDarkMode = false, isVisible = true }: { isDarkMode?: boolean, isVisible?: boolean }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -22,21 +23,21 @@ export function FloatingNav({ isDarkMode = false, isVisible = true }: { isDarkMo
 
   const navLinks = {
     manage: [
-      { label: t('nav.overview'), path: '#' },
-      { label: t('nav.analytics'), path: '#' },
-      { label: t('nav.users'), badge: '316', path: '#' },
-      { label: t('nav.settings'), path: '#' },
+      { label: t('nav.overview'), path: '#tech-stack' },
+      { label: t('nav.analytics'), path: '#services-accordion' },
+      { label: t('nav.users'), badge: '316', path: '#services-accordion' },
+      { label: t('nav.settings'), path: '#services-accordion' },
     ],
     grow: [
-      { label: t('nav.pricing'), badge: 'Updated', isPill: true, path: '#' },
-      { label: t('nav.subscriptions'), path: '#' },
-      { label: t('nav.billing'), path: '#' },
+      { label: t('nav.pricing'), badge: 'Updated', isPill: true, path: '#how-it-works' },
+      { label: t('nav.subscriptions'), path: '#archi-business' },
+      { label: t('nav.billing'), path: '#archi-dev' },
     ],
     resources: [
-      { label: t('nav.integrations'), badge: '28', path: '#' },
-      { label: t('nav.documentation'), path: '#' },
-      { label: t('nav.api'), path: '#' },
-      { label: t('nav.changelog'), badge: 'New', isPill: true, path: '#' },
+      { label: t('nav.integrations'), badge: '28', path: '#footer' },
+      { label: t('nav.documentation'), path: '#footer' },
+      { label: t('nav.api'), path: '#footer' },
+      { label: t('nav.changelog'), badge: 'New', isPill: true, path: '#services-accordion' },
     ]
   };
 
@@ -44,6 +45,26 @@ export function FloatingNav({ isDarkMode = false, isVisible = true }: { isDarkMo
     <a
       href={link.path}
       key={idx}
+      onClick={(e) => {
+        if (link.path.startsWith('#')) {
+          e.preventDefault();
+          setIsHovered(false);
+          const targetId = link.path;
+          const target = document.querySelector(targetId);
+          if (target) {
+            const rect = target.getBoundingClientRect();
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const top = rect.top + scrollTop - 100;
+            if ((window as any).lenis) {
+              (window as any).lenis.scrollTo(top, {
+                duration: 1.5,
+              });
+            } else {
+              window.scrollTo({ top, behavior: 'smooth' });
+            }
+          }
+        }
+      }}
       className={`flex items-center gap-2.5 py-4 transition-colors duration-500 text-[15px] ${isDarkMode ? 'text-slate-300 hover:text-white' : 'text-slate-600 hover:text-black'} ${idx !== arr.length - 1 ? (isDarkMode ? 'border-b border-white/5' : 'border-b border-slate-100') : ''}`}
     >
       {link.label}
@@ -98,9 +119,7 @@ export function FloatingNav({ isDarkMode = false, isVisible = true }: { isDarkMo
               </div>
 
               <div className="flex-1 flex items-center justify-center gap-1.5 sm:gap-3">
-                <div className="w-5.5 h-5.5 sm:w-7 sm:h-7 rounded-full bg-gradient-to-tr from-[#0ea5e9] to-[#38bdf8] flex items-center justify-center overflow-hidden p-[1.5px] sm:p-[2px]">
-                  <div className={`w-full h-full rounded-[50%_50%_10%_50%] transition-colors duration-500 ${isDarkMode ? 'bg-[#111]' : 'bg-white'}`}></div>
-                </div>
+                <ArchiLogo className="w-5.5 h-5.5 sm:w-7 sm:h-7" isDark={isDarkMode} />
                 <span className="font-medium text-[13px] sm:text-[15px] tracking-tight transition-colors duration-500">{t('nav.brand')}</span>
               </div>
 
@@ -114,7 +133,24 @@ export function FloatingNav({ isDarkMode = false, isVisible = true }: { isDarkMo
                   <span>{lang === 'en' ? 'AR' : 'EN'}</span>
                 </button>
 
-                <button className={`px-3 py-1.5 sm:px-5 sm:py-2 rounded-full text-[12px] sm:text-[15px] font-medium shadow-sm transition-all duration-500 ${isDarkMode ? 'bg-white hover:bg-slate-200 text-black' : 'bg-[#111] hover:bg-black text-white'}`}>
+                <button 
+                  onClick={() => {
+                    const target = document.querySelector('#footer');
+                    if (target) {
+                      const rect = target.getBoundingClientRect();
+                      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                      const top = rect.top + scrollTop - 100;
+                      if ((window as any).lenis) {
+                        (window as any).lenis.scrollTo(top, {
+                          duration: 1.5,
+                        });
+                      } else {
+                        window.scrollTo({ top, behavior: 'smooth' });
+                      }
+                    }
+                  }}
+                  className={`px-3 py-1.5 sm:px-5 sm:py-2 rounded-full text-[12px] sm:text-[15px] font-medium shadow-sm transition-all duration-500 ${isDarkMode ? 'bg-white hover:bg-slate-200 text-black' : 'bg-[#111] hover:bg-black text-white'}`}
+                >
                   {t('nav.login')}
                 </button>
               </div>
@@ -150,11 +186,52 @@ export function FloatingNav({ isDarkMode = false, isVisible = true }: { isDarkMo
 
                       {/* Social Icons */}
                       <div className={`flex items-center gap-4 mt-8 pl-1 pb-1 transition-colors duration-500 ${isDarkMode ? 'text-slate-500' : 'text-slate-400'}`}>
-                        <Twitter className={`w-4 h-4 cursor-pointer transition-colors duration-500 ${isDarkMode ? 'hover:text-white' : 'hover:text-black'}`} />
-                        <Instagram className={`w-4 h-4 cursor-pointer transition-colors duration-500 ${isDarkMode ? 'hover:text-white' : 'hover:text-black'}`} />
-                        <Linkedin className={`w-4 h-4 cursor-pointer transition-colors duration-500 ${isDarkMode ? 'hover:text-white' : 'hover:text-black'}`} />
-                        <Youtube className={`w-4 h-4 cursor-pointer transition-colors duration-500 ${isDarkMode ? 'hover:text-white' : 'hover:text-black'}`} />
-                        <Zap className={`w-4 h-4 cursor-pointer transition-colors duration-500 ${isDarkMode ? 'hover:text-white' : 'hover:text-black'}`} fill="currentColor" />
+                        {/* Instagram */}
+                        <a 
+                          href="https://www.instagram.com/rewan_ai/" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className={`transition-colors duration-500 ${isDarkMode ? 'hover:text-white' : 'hover:text-black'}`}
+                        >
+                          <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                          </svg>
+                        </a>
+                        {/* Twitter/X */}
+                        <a 
+                          href="https://x.com/Rewan_Ai" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className={`transition-colors duration-500 ${isDarkMode ? 'hover:text-white' : 'hover:text-black'}`}
+                        >
+                          <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                          </svg>
+                        </a>
+                        {/* LinkedIn */}
+                        <a 
+                          href="https://www.linkedin.com/company/rewanai/" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className={`transition-colors duration-500 ${isDarkMode ? 'hover:text-white' : 'hover:text-black'}`}
+                        >
+                          <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0z"/>
+                          </svg>
+                        </a>
+                        {/* WhatsApp */}
+                        <a 
+                          href="https://api.whatsapp.com/send/?phone=96876626636" 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className={`transition-colors duration-500 ${isDarkMode ? 'hover:text-white' : 'hover:text-black'}`}
+                        >
+                          <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                            <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.002-3.973-.505-5.724-1.46L0 24zm6.59-4.846c1.6.95 3.497 1.45 5.416 1.451 5.378 0 9.754-4.373 9.757-9.755.002-2.607-1.01-5.059-2.85-6.902C17.078 2.095 14.634 1.08 12.03 1.08c-5.382 0-9.76 4.374-9.764 9.757-.002 1.957.51 3.867 1.485 5.568L2.73 21.09l4.917-1.29zM17.47 14.86c-.296-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.347.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                          </svg>
+                        </a>
                       </div>
                     </div>
 

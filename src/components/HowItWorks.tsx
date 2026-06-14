@@ -614,9 +614,9 @@ export function HowItWorks() {
                                     </div>
                                     {/* Editor Document Content */}
                                     <div className="flex-1 overflow-y-auto no-scrollbar p-4 font-sans text-start select-text leading-relaxed text-zinc-300" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
-                                       <h1 className="text-[12px] font-bold text-zinc-100 border-b border-[#27272a] pb-1.5 mb-2.5" style={{ borderBottomColor: '#27272a' }}>
+                                       <div className="text-[12px] font-bold text-zinc-100 border-b border-[#27272a] pb-1.5 mb-2.5" style={{ borderBottomColor: '#27272a' }}>
                                           {t('hiw.compilation.title')}
-                                       </h1>
+                                       </div>
 
                                        {/* Paths & Description List */}
                                        <div className="space-y-1.5 mb-4 text-[9.5px]">
@@ -640,7 +640,7 @@ export function HowItWorks() {
 
                                        {/* Tech details */}
                                        <div className="text-[9.5px] mb-3">
-                                          <h2 className="font-bold text-zinc-100 text-[10px] mb-1">Backend (Express 5 + TypeScript)</h2>
+                                          <div className="font-bold text-zinc-100 text-[10px] mb-1">Backend (Express 5 + TypeScript)</div>
                                           <ul className="list-disc pl-4 space-y-0.5 text-zinc-400 text-start">
                                              <li>REST API at <span className="font-mono text-sky-400">/api/tests</span>, <span className="font-mono text-sky-400">/api/bugs</span>, <span className="font-mono text-sky-400">/api/tasks</span></li>
                                              <li>Auth middleware (JWT from Supabase)</li>
@@ -650,7 +650,7 @@ export function HowItWorks() {
 
                                        {/* Getting started */}
                                        <div className="text-[9.5px]">
-                                          <h2 className="font-bold text-zinc-100 text-[10px] mb-1">To Start</h2>
+                                          <div className="font-bold text-zinc-100 text-[10px] mb-1">To Start</div>
                                           <ol className="list-decimal pl-4 space-y-0.5 text-zinc-400 font-mono text-[9px] text-start">
                                              <li>Create a Supabase project, run <span className="text-emerald-600">supabase/migration.sql</span></li>
                                              <li>Set Supabase credentials in <span className="text-zinc-400">frontend/.env.local</span> and <span className="text-zinc-400">backend/.env</span></li>
@@ -755,11 +755,11 @@ export function HowItWorks() {
 
             {/* Right side indicators (desktop only) */}
             <motion.div style={{ opacity: indicatorOpacity }} className={`absolute top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center text-[12px] font-medium font-mono uppercase tracking-widest gap-2 z-10 pointer-events-none ${isRTL ? 'left-[5%]' : 'right-[5%]'}`}>
-               <div className="py-2 transition-colors duration-300" style={{ color: activeStep === 0 ? "#38bdf8" : "#94a3b8" }}>{t('hiw.step2')}</div>
+               <div className="py-2 transition-colors duration-300" style={{ color: activeStep === 0 ? "#38bdf8" : "#94a3b8" }}>{t('hiw.step1')}</div>
                <div className="w-[1px] h-8 bg-slate-200"></div>
-               <div className="py-2 transition-colors duration-300" style={{ color: activeStep === 1 ? "#38bdf8" : "#94a3b8" }}>{t('hiw.step4')}</div>
+               <div className="py-2 transition-colors duration-300" style={{ color: activeStep === 1 ? "#38bdf8" : "#94a3b8" }}>{t('hiw.step2')}</div>
                <div className="w-[1px] h-8 bg-slate-200"></div>
-               <div className="py-2 transition-colors duration-300" style={{ color: activeStep === 2 ? "#38bdf8" : "#94a3b8" }}>{t('hiw.step5')}</div>
+               <div className="py-2 transition-colors duration-300" style={{ color: activeStep === 2 ? "#38bdf8" : "#94a3b8" }}>{t('hiw.step3')}</div>
             </motion.div>
          </div>
       </section>

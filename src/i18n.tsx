@@ -114,7 +114,7 @@ const translations: Record<Lang, Record<string, string>> = {
 
     // ──── How It Works ────
     'hiw.label': 'How it works?',
-    'hiw.three': 'Five steps.',
+    'hiw.three': 'Three steps.',
     'hiw.then': 'Then it ',
     'hiw.runs': 'runs itself.',
     'hiw.step1': 'Step 1',
@@ -351,6 +351,7 @@ const translations: Record<Lang, Record<string, string>> = {
     'footer.cta.heading': 'Ready to lock down your exact vision?',
     'footer.cta.button': 'Book a Demo',
     'footer.brand': 'Archi',
+    'footer.slogan': '{Architecting} the future of software, autonomously. Crafted in {Salalah}.',
     'footer.tagline': 'Empowering businesses in Oman with cutting-edge AI solutions.',
     'footer.links': 'Links',
     'footer.socials': 'Socials',
@@ -361,9 +362,11 @@ const translations: Record<Lang, Record<string, string>> = {
     'footer.phone.label': 'Phone No',
     'footer.email.label': 'Email Address',
     'footer.location.label': 'Location',
-    'footer.phone': '+968 9999 9999',
-    'footer.email': 'hello@archi.om',
-    'footer.location': 'Muscat, Oman',
+    'footer.website.label': 'Website',
+    'footer.phone': '+968 7662 6636',
+    'footer.email': 'info@rewan.com',
+    'footer.location': 'Salalah, Sultanate of Oman',
+    'footer.website': 'rewan.ai',
     'footer.copyright': '© 2026 Archi. All rights reserved.',
     'footer.privacy': 'Privacy Policy',
     'footer.terms': 'Terms of Service',
@@ -373,7 +376,10 @@ const translations: Record<Lang, Record<string, string>> = {
     'footer.nav.support': 'Core Features',
     'footer.social.twitter': 'Twitter',
     'footer.social.linkedin': 'LinkedIn',
-    'footer.social.github': 'GitHub',
+    'footer.social.instagram': 'Instagram',
+    'footer.social.whatsapp': 'WhatsApp',
+    'seo.title': 'Archi | Automated Software Architecture & Code Compilation Platform',
+    'seo.desc': 'Archi is a bimodal cognitive engine that interviews you, structures your business requirements, and automatically generates technical specifications, blueprints, and production-ready code.',
   },
   ar: {
     // ──── Navbar ────
@@ -478,7 +484,7 @@ const translations: Record<Lang, Record<string, string>> = {
 
     // ──── How It Works ────
     'hiw.label': 'كيف يعمل؟',
-    'hiw.three': 'خمس خطوات.',
+    'hiw.three': 'ثلاث خطوات.',
     'hiw.then': 'ثم ',
     'hiw.runs': 'يعمل بنفسه.',
     'hiw.step1': 'الخطوة ١',
@@ -714,6 +720,7 @@ const translations: Record<Lang, Record<string, string>> = {
     'footer.cta.heading': 'هل أنت مستعد لتحديد رؤيتك بدقة؟',
     'footer.cta.button': 'احجز عرضاً تجريبياً',
     'footer.brand': 'أركي',
+    'footer.slogan': '{هندسة} مستقبل البرمجيات، ذاتياً. صُنعت في {صلالة}.',
     'footer.tagline': 'تمكين الشركات في عُمان بحلول الذكاء الاصطناعي المتطورة.',
     'footer.links': 'روابط',
     'footer.socials': 'التواصل الاجتماعي',
@@ -724,9 +731,11 @@ const translations: Record<Lang, Record<string, string>> = {
     'footer.phone.label': 'رقم الهاتف',
     'footer.email.label': 'البريد الإلكتروني',
     'footer.location.label': 'الموقع',
-    'footer.phone': '+968 9999 9999',
-    'footer.email': 'hello@archi.om',
-    'footer.location': 'مسقط، عُمان',
+    'footer.website.label': 'الموقع الإلكتروني',
+    'footer.phone': '+968 7662 6636',
+    'footer.email': 'info@rewan.com',
+    'footer.location': 'صلالة، سلطنة عمان',
+    'footer.website': 'rewan.ai',
     'footer.copyright': '© 2026 أركي. جميع الحقوق محفوظة.',
     'footer.privacy': 'سياسة الخصوصية',
     'footer.terms': 'شروط الخدمة',
@@ -737,6 +746,8 @@ const translations: Record<Lang, Record<string, string>> = {
     'footer.social.twitter': 'تويتر',
     'footer.social.linkedin': 'لينكد إن',
     'footer.social.github': 'جيت هب',
+    'seo.title': 'أركي | منصة هندسة البرمجيات وتجميع الكود التلقائي',
+    'seo.desc': 'منصة أركي هي محرك إدراكي تفاعلي يحاورك، وينظم أفكارك العشوائية، ويقوم تلقائياً ببناء وثائق المتطلبات الفنية، وخرائط الطريق، وتجميع تطبيقات برمجية جاهزة للإنتاج.',
   }
 };
 
@@ -749,7 +760,20 @@ const LanguageContext = createContext<LanguageContextType>({
 });
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [lang, setLang] = useState<Lang>('ar');
+  const [lang, setLang] = useState<Lang>(() => {
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const urlLang = params.get('lang') as Lang;
+      if (urlLang === 'en' || urlLang === 'ar') {
+        return urlLang;
+      }
+      const saved = localStorage.getItem('archi_lang') as Lang;
+      if (saved === 'en' || saved === 'ar') {
+        return saved;
+      }
+    }
+    return 'ar';
+  });
   const isRTL = lang === 'ar';
 
   const t = useCallback((key: string): string => {
@@ -760,21 +784,74 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     return key;
   }, [lang]);
 
-  const toggleLang = useCallback(() => {
-    setLang((prev) => (prev === 'en' ? 'ar' : 'en'));
+  const handleSetLang = useCallback((newLang: Lang) => {
+    setLang(newLang);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('archi_lang', newLang);
+      const url = new URL(window.location.href);
+      url.searchParams.set('lang', newLang);
+      window.history.replaceState(null, '', url.toString());
+    }
   }, []);
 
-  // Apply direction and font to document
+  const toggleLang = useCallback(() => {
+    handleSetLang(lang === 'en' ? 'ar' : 'en');
+  }, [lang, handleSetLang]);
+
+  // Apply direction, font, and SEO metadata to document
   useEffect(() => {
     document.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
     document.documentElement.setAttribute('lang', lang);
     document.body.style.fontFamily = isRTL
       ? "'Tajawal', 'Cairo', sans-serif"
       : "'Inter', 'Cairo', sans-serif";
-  }, [lang, isRTL]);
+
+    // Dynamically update document title
+    document.title = t('seo.title');
+
+    // Dynamically update meta description
+    let metaDesc = document.querySelector('meta[name="description"]');
+    if (!metaDesc) {
+      metaDesc = document.createElement('meta');
+      metaDesc.setAttribute('name', 'description');
+      document.head.appendChild(metaDesc);
+    }
+    metaDesc.setAttribute('content', t('seo.desc'));
+
+    // Dynamically update Open Graph / Facebook Metadata
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute('content', t('seo.title'));
+    const ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) ogDesc.setAttribute('content', t('seo.desc'));
+
+    // Dynamically update Twitter Metadata
+    const twTitle = document.querySelector('meta[name="twitter:title"]');
+    if (twTitle) twTitle.setAttribute('content', t('seo.title'));
+    const twDesc = document.querySelector('meta[name="twitter:description"]');
+    if (twDesc) twDesc.setAttribute('content', t('seo.desc'));
+
+    // Dynamically update JSON-LD Schema
+    const schemaScript = document.querySelector('script[type="application/ld+json"]');
+    if (schemaScript) {
+      try {
+        const schemas = JSON.parse(schemaScript.innerHTML);
+        if (Array.isArray(schemas)) {
+          schemas.forEach((schema: any) => {
+            if (schema["@type"] === "SoftwareApplication" || schema["@type"] === "WebSite") {
+              schema.description = t('seo.desc');
+              schema.name = lang === 'ar' ? 'أركي' : 'Archi';
+            }
+          });
+          schemaScript.innerHTML = JSON.stringify(schemas, null, 2);
+        }
+      } catch (e) {
+        console.error("Failed to parse/update schema JSON-LD", e);
+      }
+    }
+  }, [lang, isRTL, t]);
 
   return (
-    <LanguageContext.Provider value={{ lang, setLang, toggleLang, t, isRTL }}>
+    <LanguageContext.Provider value={{ lang, setLang: handleSetLang, toggleLang, t, isRTL }}>
       {children}
     </LanguageContext.Provider>
   );
