@@ -87,7 +87,7 @@ const ContactForm = ({ isRTL }: { isRTL: boolean }) => {
     if (!formData.phone || !formData.email || !formData.description) return;
     setIsSubmitting(true);
     try {
-      const response = await fetch("https://formsubmit.co/ajax/info@rewan.com", {
+      const response = await fetch("https://formsubmit.co/ajax/info@rewan.ai", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

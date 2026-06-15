@@ -164,7 +164,7 @@ const Footer37 = ({
                 </div>
               </a>
               {/* Email */}
-              <a href="mailto:info@rewan.com" className="flex items-center gap-3.5 group cursor-pointer">
+              <a href="mailto:info@rewan.ai" className="flex items-center gap-3.5 group cursor-pointer">
                 <div className="flex items-center justify-center rounded-full bg-slate-50 p-2 shrink-0 transition-colors group-hover:bg-[#38bdf8]/10">
                   <Mail className="h-3.5 w-3.5 text-[#38bdf8]" />
                 </div>
