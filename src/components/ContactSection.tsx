@@ -96,7 +96,9 @@ const ContactForm = ({ isRTL }: { isRTL: boolean }) => {
         body: JSON.stringify({
           phone: formData.phone,
           email: formData.email,
-          description: formData.description
+          description: formData.description,
+          _captcha: "false",
+          _subject: "Archi Platform - New Project Brief"
         })
       });
       if (response.ok) {
