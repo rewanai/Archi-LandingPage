@@ -154,14 +154,20 @@ export function WhatIsArchi() {
     {
       id: 1,
       num: '01',
-      title: isRTL ? 'التجميع وقواعد البيانات' : 'Code Compilation',
-      subtitle: isRTL ? 'ربط الواجهات وتخزين البيانات' : 'Assemble UI & database',
+      title: isRTL ? 'البرمجة والتجميع' : 'Autonomous Development',
+      subtitle: isRTL ? 'كتابة الأكواد وبناء القواعد' : 'Write code & design schemas',
     },
     {
       id: 2,
       num: '02',
-      title: isRTL ? 'الحماية والفحص التلقائي' : 'Security Shield',
-      subtitle: isRTL ? 'اختبارات السلامة والامتثال' : 'Safety & MCIT checks',
+      title: isRTL ? 'الفحص والاختبار الذاتي' : 'Self-Testing & QA',
+      subtitle: isRTL ? 'اختبارات الحماية والامتثال' : 'Safety & compliance checks',
+    },
+    {
+      id: 3,
+      num: '03',
+      title: isRTL ? 'النشر والاستضافة الفورية' : 'Autonomous Deployment',
+      subtitle: isRTL ? 'بناء التطبيق وتفعيله حياً' : 'Live cloud build & domain SSL',
     },
   ];
 
@@ -667,6 +673,76 @@ export function WhatIsArchi() {
             </div>
           </div>
         );
+      case 3: // Modern deployment network connection wireframe
+        return (
+          <div className="relative w-full h-full flex flex-col justify-between p-3.5 overflow-hidden" dir="ltr">
+            {/* Subtle Grid Background */}
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, #000 1px, transparent 1px)', backgroundSize: '8px 8px' }} />
+
+            {/* Topology Header */}
+            <div className="flex justify-between items-center mb-1 border-b border-black/[0.03] pb-1.5 z-10">
+              <div className="flex items-center gap-1">
+                <span className="w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse" />
+                <div className="w-14 h-1.5 bg-black/25 rounded" />
+              </div>
+              <span className="w-8 h-3.5 bg-sky-500/10 border border-sky-500/15 rounded-full flex items-center justify-center text-sky-600">
+                <svg className="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-.778.099-1.533.284-2.253" />
+                </svg>
+              </span>
+            </div>
+
+            {/* Wireframe Deployment Diagram */}
+            <div className="relative flex-1 w-full flex items-center justify-center my-1">
+              <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 200 100" fill="none">
+                <path d="M 35,50 L 95,50" stroke="url(#sky-grad-line)" strokeWidth="1.5" />
+                <path d="M 95,50 L 155,50" stroke="url(#sky-grad-line)" strokeWidth="1.5" strokeDasharray="3 3" />
+                
+                <defs>
+                  <linearGradient id="sky-grad-line" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#bae6fd" stopOpacity="0.3" />
+                    <stop offset="50%" stopColor="#38bdf8" stopOpacity="0.8" />
+                    <stop offset="100%" stopColor="#0284c7" stopOpacity="0.3" />
+                  </linearGradient>
+                </defs>
+                <circle cx="65" cy="50" r="2" fill="#38bdf8" className="animate-pulse" />
+                <circle cx="125" cy="50" r="1.5" fill="#38bdf8" />
+              </svg>
+
+              {/* Local Server Node */}
+              <div className="absolute left-[3%] top-[33%] w-7 h-7 rounded-lg border border-black/[0.06] bg-white/90 shadow-3xs flex items-center justify-center text-slate-400">
+                <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <rect x="2" y="3" width="20" height="14" rx="2" />
+                  <line x1="8" y1="21" x2="16" y2="21" />
+                  <line x1="12" y1="17" x2="12" y2="21" />
+                </svg>
+              </div>
+
+              {/* Cloud Gateway */}
+              <div className="absolute left-[40%] top-[33%] w-7 h-7 rounded-lg border border-[#38bdf8]/35 bg-white shadow-2xs flex items-center justify-center text-[#38bdf8]">
+                <svg className="w-3.5 h-3.5 animate-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M17.5 19A5.5 5.5 0 0 0 18 8h-1.26A8 8 0 1 0 4 15.25" />
+                  <path d="M4 15.25A5.5 5.5 0 0 0 5.5 19h12" />
+                </svg>
+              </div>
+
+              {/* Globe / Custom Domain Node */}
+              <div className="absolute right-[3%] top-[33%] w-7 h-7 rounded-lg border border-black/[0.06] bg-white/90 shadow-3xs flex items-center justify-center text-slate-400">
+                <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="2" y1="12" x2="22" y2="12" />
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                </svg>
+              </div>
+            </div>
+
+            {/* Topology Footer */}
+            <div className="pt-1.5 border-t border-black/[0.03] flex items-center justify-between text-[6.5px] font-mono text-black/30">
+              <div className="w-10 h-1 bg-black/10 rounded-full" />
+              <div className="w-8 h-1 bg-[#38bdf8]/30 rounded-full" />
+            </div>
+          </div>
+        );
       default:
         return null;
     }
@@ -715,6 +791,57 @@ export function WhatIsArchi() {
             <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-[7px] text-slate-400 font-mono">
               <span>{isRTL ? "أمان سيادي مفعل" : "Sovereign Compliance"}</span>
               <span className="text-slate-500 font-medium">SSL ACTIVE</span>
+            </div>
+          </div>
+        );
+      case 3: // Autonomous Deployment Dashboard
+        return (
+          <div className="flex flex-col h-full justify-between text-start text-[9px] font-sans" dir={isRTL ? 'rtl' : 'ltr'}>
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-1.5 text-emerald-650 bg-emerald-500/10 px-2.5 py-0.5 rounded-full w-fit font-bold text-[7.5px] border border-emerald-500/20">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  <span>{isRTL ? "مباشر ونشط" : "LIVE & DEPLOYED"}</span>
+                </div>
+                <span className="text-[7.5px] font-mono text-slate-400">v1.0.4 — GCC East</span>
+              </div>
+
+              {/* Clickable project URL */}
+              <div className="bg-[#05070f] border border-slate-900 rounded-lg p-2 flex items-center justify-between gap-2 shadow-inner select-all" dir="ltr">
+                <div className="flex items-center gap-2 min-w-0">
+                  <span className="text-[10px] text-emerald-500 shrink-0">🌐</span>
+                  <span className="text-[#38bdf8] font-mono text-[7.5px] truncate font-medium">https://todo-app.archi.om</span>
+                </div>
+                <span className="text-slate-500 hover:text-slate-200 text-[6.5px] font-mono cursor-pointer shrink-0 border border-slate-800 px-1 py-0.5 rounded">COPY</span>
+              </div>
+
+              {/* System Specs and Environment Info */}
+              <div className="grid grid-cols-2 gap-1.5 pt-1 text-slate-650">
+                <div className="flex flex-col border border-slate-100 bg-slate-50/50 p-1.5 rounded">
+                  <span className="text-[6.5px] text-slate-400 font-medium uppercase tracking-wider">{isRTL ? "مزود الخدمة" : "CLOUD PROVIDER"}</span>
+                  <span className="text-slate-700 font-bold text-[8px] mt-0.5">Vercel / AWS Oman</span>
+                </div>
+                <div className="flex flex-col border border-slate-100 bg-slate-50/50 p-1.5 rounded">
+                  <span className="text-[6.5px] text-slate-400 font-medium uppercase tracking-wider">{isRTL ? "قاعدة البيانات" : "DATABASE STATE"}</span>
+                  <span className="text-emerald-650 font-bold text-[8px] mt-0.5 flex items-center gap-1">
+                    <span className="w-1 h-1 rounded-full bg-emerald-500" />
+                    Supabase Sync
+                  </span>
+                </div>
+                <div className="flex flex-col border border-slate-100 bg-slate-50/50 p-1.5 rounded">
+                  <span className="text-[6.5px] text-slate-400 font-medium uppercase tracking-wider">{isRTL ? "شهادة الأمان" : "SSL CERTIFICATE"}</span>
+                  <span className="text-slate-700 font-bold text-[8px] mt-0.5">SHA-256 (HTTPS)</span>
+                </div>
+                <div className="flex flex-col border border-[#38bdf8]/10 bg-[#38bdf8]/2 p-1.5 rounded">
+                  <span className="text-[6.5px] text-[#38bdf8] font-semibold uppercase tracking-wider">{isRTL ? "تكامل النطاق" : "DOMAIN SYNC"}</span>
+                  <span className="text-[#38bdf8] font-bold text-[8px] mt-0.5">{isRTL ? "مكتملة ونشطة" : "Active & Verified"}</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-2 border-t border-slate-100 flex items-center justify-between text-[7px] text-slate-400 font-mono shrink-0">
+              <span>{isRTL ? "نظام موثوق ١٠٠٪" : "100% Sovereign Deployment"}</span>
+              <span className="text-slate-500 font-medium">12:30:15 UTC</span>
             </div>
           </div>
         );

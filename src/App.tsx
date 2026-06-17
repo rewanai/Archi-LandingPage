@@ -191,6 +191,22 @@ function AppContent() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const scrollToSection = (id: string) => {
+    const target = document.getElementById(id);
+    if (target) {
+      const rect = target.getBoundingClientRect();
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const top = rect.top + scrollTop - 100;
+      if ((window as any).lenis) {
+        (window as any).lenis.scrollTo(top, {
+          duration: 1.5,
+        });
+      } else {
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
     <>
       <SmoothCursor
@@ -390,6 +406,7 @@ function AppContent() {
                 {/* CTA Buttons — below marquee */}
                 <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-4 mt-6">
                   <motion.button
+                    onClick={() => scrollToSection('contact-section')}
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5, delay: 1.25, ease: 'backOut' }}
@@ -413,6 +430,7 @@ function AppContent() {
                     </span>
                   </motion.button>
                   <motion.button
+                    onClick={() => scrollToSection('how-it-works')}
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5, delay: 1.35, ease: 'backOut' }}

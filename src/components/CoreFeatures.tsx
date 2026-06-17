@@ -60,11 +60,11 @@ export function CoreFeatures() {
     ];
 
     const tabs = [
+        t('hiw.phase03.title'),
         t('hiw.form.title'),
         t('hiw.analyst.title'),
         t('hiw.design.title'),
-        t('hiw.stories.title'),
-        t('hiw.phase03.title')
+        t('hiw.stories.title')
     ];
     const [activeTab, setActiveTab] = useState(tabs[0]);
 
@@ -149,7 +149,7 @@ export function CoreFeatures() {
                           
                           <AnimatePresence mode="wait">
                              {/* TAB 1: VISION & SCOPE FORM */}
-                             {activeTab === tabs[0] && (
+                             {activeTab === tabs[1] && (
                                 <motion.div
                                    key="vision-form"
                                    initial={{ opacity: 0, scale: 0.97 }}
@@ -253,7 +253,7 @@ export function CoreFeatures() {
                              )}
 
                              {/* TAB 2: THE ANALYST (DARK THEME) */}
-                             {activeTab === tabs[1] && (
+                             {activeTab === tabs[2] && (
                                 <motion.div
                                    key="analyst-dark"
                                    initial={{ opacity: 0, scale: 0.97 }}
@@ -432,7 +432,7 @@ export function CoreFeatures() {
                              )}
 
                              {/* TAB 3: DESIGN CONFIGURATION */}
-                             {activeTab === tabs[2] && (
+                             {activeTab === tabs[3] && (
                                 <motion.div
                                    key="design-config"
                                    initial={{ opacity: 0, scale: 0.97 }}
@@ -616,7 +616,7 @@ export function CoreFeatures() {
                              )}
 
                              {/* TAB 4: USER STORIES (LIGHT THEME) */}
-                             {activeTab === tabs[3] && (
+                             {activeTab === tabs[4] && (
                                 <motion.div
                                    key="stories-light"
                                    initial={{ opacity: 0, scale: 0.97 }}
@@ -703,220 +703,247 @@ export function CoreFeatures() {
                                       </div>
                                    </div>
                                 </motion.div>
-                             )}
+                              )}
 
-                             {/* TAB 5: AUTONOMOUS COMPILATION (LIGHT THEME) */}
-                             {activeTab === tabs[4] && (
-                                <motion.div
-                                   key="compilation-light"
-                                   initial={{ opacity: 0, scale: 0.97 }}
-                                   animate={{ opacity: 1, scale: 1 }}
-                                   exit={{ opacity: 0, scale: 0.97 }}
-                                   transition={{ duration: 0.25 }}
-                                   className="w-full h-full bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden flex flex-col border border-zinc-200 relative z-10 select-none text-zinc-600"
-                                >
-                                   {/* Style tag for CSS animations (like progress bar) */}
-                                   <style dangerouslySetInnerHTML={{__html: `
-                                      @keyframes progress-run-cf {
-                                         0% { width: 0%; }
-                                         105% { width: 100%; }
-                                      }
-                                      .animate-progress-run-cf {
-                                         animation: progress-run-cf 1s linear infinite;
-                                      }
-                                   `}} />
+                              {/* TAB 5: AUTONOMOUS COMPILATION (DARK THEME CLONE) */}
+                              {activeTab === tabs[0] && (
+                                 <motion.div
+                                    key="compilation-dark-replica"
+                                    initial={{ opacity: 0, scale: 0.97 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    exit={{ opacity: 0, scale: 0.97 }}
+                                    transition={{ duration: 0.25 }}
+                                    className="w-full h-full bg-[#141416] rounded-2xl shadow-2xl overflow-hidden flex border border-[#222] relative z-10 select-none text-[#e3e3e5] font-sans"
+                                 >
+                                    {/* Column 1: Thin Leftmost Sidebar */}
+                                    <div className="w-12 border-r border-[#222] bg-[#0c0c0d] flex flex-col items-center justify-between py-3 shrink-0">
+                                       {/* Top: Logo icon */}
+                                       <div className="flex flex-col items-center gap-4 w-full">
+                                          <div className="w-8 h-8 flex items-center justify-center text-white">
+                                             <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5}>
+                                                <path d="M12 12c-2-2.67-4-4-6-4a4 4 0 1 0 0 8c2 0 4-1.33 6-4zm0 0c2 2.67 4 4 6 4a4 4 0 1 0 0-8c-2 0-4 1.33-6 4z"/>
+                                             </svg>
+                                          </div>
+                                          {/* Nav Menu */}
+                                          <div className="flex flex-col items-center gap-1.5 w-full">
+                                             <div className="w-8 h-8 rounded-lg bg-[#222] text-[#38bdf8] flex items-center justify-center cursor-pointer">
+                                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                                   <path strokeLinecap="round" strokeLinejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                                </svg>
+                                             </div>
+                                             <div className="w-8 h-8 text-zinc-500 hover:text-zinc-350 flex items-center justify-center cursor-pointer">
+                                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2}>
+                                                   <path strokeLinecap="round" strokeLinejoin="round" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2z" />
+                                                </svg>
+                                             </div>
+                                             <div className="w-8 h-8 text-zinc-500 hover:text-zinc-350 flex items-center justify-center cursor-pointer">
+                                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2}>
+                                                   <path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 01-2 2h0a2 2 0 01-2-2v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                                                </svg>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       {/* Bottom: Settings & User profile avatar */}
+                                       <div className="flex flex-col items-center gap-3 w-full">
+                                          <div className="w-8 h-8 text-zinc-500 hover:text-zinc-350 flex items-center justify-center cursor-pointer">
+                                             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.2}>
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                                             </svg>
+                                          </div>
+                                          <div className="w-7 h-7 rounded-full bg-sky-500 text-[10px] font-bold text-white flex items-center justify-center shadow-inner cursor-pointer">
+                                             A
+                                          </div>
+                                       </div>
+                                    </div>
 
-                                   {/* IDE Top Bar Header */}
-                                   <div className="h-8 border-b border-zinc-200 bg-zinc-100 flex items-center justify-between px-3 text-[10px] text-zinc-550 shrink-0 font-sans">
-                                      {/* Window Controls */}
-                                      <div className="flex items-center gap-1.5 w-16">
-                                         <span className="w-2.5 h-2.5 rounded-full bg-red-400 border border-red-500/20"></span>
-                                         <span className="w-2.5 h-2.5 rounded-full bg-amber-400 border border-amber-500/20"></span>
-                                         <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 border border-emerald-500/20"></span>
-                                      </div>
+                                    {/* Column 2: Wider Sidebar */}
+                                    <div className="w-48 border-r border-[#222] bg-[#111112] flex flex-col justify-between p-3 shrink-0 text-start">
+                                       <div className="flex flex-col gap-4">
+                                          {/* Workspace Title & Info */}
+                                          <div className="flex flex-col">
+                                             <span className="text-[7.5px] uppercase font-bold text-zinc-500 tracking-wider">Workspace</span>
+                                             <div className="flex items-center justify-between mt-1">
+                                                <span className="text-[11px] font-bold text-white">To_Do_Small_App</span>
+                                                <button className="text-zinc-500 hover:text-zinc-300 text-[10px] leading-none pb-1 font-bold">...</button>
+                                             </div>
+                                             <span className="text-[8px] text-zinc-500 font-medium truncate mt-0.5" dir="ltr">~\Arch1\Arch1\Arch1 Do...</span>
+                                          </div>
 
-                                      {/* Search Bar */}
-                                      <div className="w-48 sm:w-56 h-5.5 bg-white border border-zinc-200 rounded flex items-center justify-between px-2 text-[9px] text-zinc-400 cursor-text transition-colors">
-                                         <div className="flex items-center gap-1">
-                                            <svg className="w-2.5 h-2.5 text-zinc-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                                               <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                                            </svg>
-                                            <span className="font-medium text-zinc-450">Search ArchiTest</span>
-                                         </div>
-                                         <span className="text-[7.5px] bg-zinc-100 border border-zinc-200 text-zinc-500 rounded px-1 scale-90">Ctrl+K</span>
-                                      </div>
+                                          {/* New Session Button */}
+                                          <button className="w-full border border-zinc-800 rounded-lg py-1.5 px-3 flex items-center justify-center gap-1.5 text-[9.5px] text-white hover:bg-zinc-800 transition-colors font-medium bg-[#1e1e20]/40 cursor-pointer">
+                                             <svg className="w-3.5 h-3.5 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                             </svg>
+                                             <span>New session</span>
+                                          </button>
 
-                                      {/* Action Items */}
-                                      <div className="flex items-center gap-2 w-24 justify-end">
-                                         <button className="flex items-center gap-1 px-1.5 py-0.5 border border-zinc-200 bg-white rounded text-[8.5px] font-medium text-zinc-600 hover:bg-zinc-50 transition-all cursor-pointer leading-none">
-                                            <svg className="w-2.5 h-2.5 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                                               <path strokeLinecap="round" strokeLinejoin="round" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
-                                            </svg>
-                                            <span>Copy path</span>
-                                         </button>
-                                      </div>
-                                   </div>
+                                          {/* Conversation List */}
+                                          <div className="flex flex-col gap-1.5 mt-1">
+                                             <div className="text-[9.5px] text-zinc-400 font-normal px-1 py-1 hover:bg-[#1e1e20]/45 rounded cursor-pointer transition-colors">Conversation start</div>
+                                             <div className="text-[9.5px] text-zinc-400 font-normal px-1 py-1 hover:bg-[#1e1e20]/45 rounded cursor-pointer transition-colors">Conversation start</div>
+                                          </div>
+                                       </div>
 
-                                   {/* Main Workspace Body */}
-                                   <div className="flex-1 flex overflow-hidden min-h-0 relative">
-                                      
-                                      {/* Center Editor Panel */}
-                                      <div className="flex-1 flex flex-col bg-zinc-50 overflow-hidden min-w-0 relative">
-                                         
-                                         {/* Editor Tab Header */}
-                                         <div className="h-7 border-b border-zinc-200 bg-zinc-100 flex items-center justify-between shrink-0 select-none font-sans px-1.5">
-                                            <div className="flex items-center h-full">
-                                               <div className="bg-zinc-50 h-full border-r border-zinc-200 border-t-2 border-t-sky-400 text-zinc-800 text-[8.5px] font-semibold px-3 flex items-center gap-1.5 relative top-[0.5px]">
-                                                  <span>QA Platform Business Requirements</span>
-                                                  <button className="text-zinc-400 hover:text-zinc-600 scale-90">×</button>
-                                               </div>
-                                            </div>
-                                            <div className="flex items-center gap-1 text-zinc-450 px-1">
-                                               <span className="w-1.5 h-1.5 rounded-full bg-zinc-300"></span>
-                                               <button className="text-zinc-450 hover:text-zinc-600">
-                                                  <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
-                                                     <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM14 10a2 2 0 11-4 0 2 2 0 014 0zM22 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                                                  </svg>
-                                               </button>
-                                            </div>
-                                         </div>
+                                       {/* Getting Started card */}
+                                       <div className="bg-[#18181b]/40 border border-zinc-800/40 rounded-xl p-2.5 flex flex-col text-start">
+                                          <span className="text-[9.5px] text-zinc-300 font-bold">Getting started</span>
+                                          <span className="text-[8px] text-zinc-455 leading-relaxed mt-1">
+                                             Archi includes free models so you can start immediately.
+                                          </span>
+                                          <span className="text-[8px] text-zinc-455 leading-relaxed mt-1">
+                                             Connect any provider to use models, inc. Claude, GPT, Gemini etc.
+                                          </span>
+                                          <button className="w-full bg-[#18181b] border border-zinc-800 rounded-lg py-1.5 mt-2.5 text-[8.5px] text-white font-semibold hover:bg-zinc-800 transition-colors cursor-pointer leading-none">
+                                             + Connect provider
+                                          </button>
+                                          <span className="text-[7.5px] text-zinc-550 text-center block mt-1.5 font-medium cursor-pointer hover:text-zinc-400">Not yet</span>
+                                       </div>
+                                    </div>
 
-                                         {/* Editor Document Content */}
-                                         <div className="flex-1 overflow-y-auto no-scrollbar p-4 font-sans text-start select-text leading-relaxed text-zinc-600">
-                                            <div className="text-[12px] font-bold text-zinc-800 border-b border-zinc-200 pb-1.5 mb-2.5">
-                                               {t('hiw.compilation.title')}
-                                            </div>
+                                    {/* Column 3: Main Workspace Panel */}
+                                    <div className="flex-1 bg-[#161617] flex flex-col overflow-hidden min-w-0 text-start">
+                                       {/* Top Header Bar */}
+                                       <div className="h-9 border-b border-[#222] bg-[#141416] flex items-center justify-between px-3 shrink-0 font-sans">
+                                          {/* Navigation Arrows */}
+                                          <div className="flex items-center gap-2">
+                                             <button className="w-5 h-5 rounded hover:bg-zinc-800 flex items-center justify-center text-zinc-500 cursor-pointer">
+                                                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                                                   <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                                                </svg>
+                                             </button>
+                                             <button className="w-5 h-5 rounded hover:bg-zinc-800 flex items-center justify-center text-zinc-650 cursor-not-allowed">
+                                                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
+                                                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                                                </svg>
+                                             </button>
+                                             <button className="w-5 h-5 rounded hover:bg-zinc-800 flex items-center justify-center text-zinc-400 cursor-pointer ml-1">
+                                                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                                   <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+                                                </svg>
+                                             </button>
+                                          </div>
 
-                                            {/* Paths & Description List */}
-                                            <div className="space-y-1.5 mb-4 text-[9.5px]">
-                                               <div className="flex items-start gap-4 py-0.5 border-b border-zinc-150">
-                                                  <span className="font-mono text-sky-650 font-bold shrink-0 min-w-[110px]">/dashboard/tests</span>
-                                                  <span className="text-zinc-500 font-medium">CRUD test cases with step definition, description, convert to bug</span>
-                                               </div>
-                                               <div className="flex items-start gap-4 py-0.5 border-b border-zinc-150">
-                                                  <span className="font-mono text-sky-650 font-bold shrink-0 min-w-[110px]">/dashboard/bugs</span>
-                                                  <span className="text-zinc-500 font-medium">CRUD bugs with severity/status/environment</span>
-                                               </div>
-                                               <div className="flex items-start gap-4 py-0.5 border-b border-zinc-150">
-                                                  <span className="font-mono text-sky-650 font-bold shrink-0 min-w-[110px]">/dashboard/tasks</span>
-                                                  <span className="text-zinc-500 font-medium">Daily task checklist with recurring option</span>
-                                               </div>
-                                               <div className="flex items-start gap-4 py-0.5 border-b border-zinc-150">
-                                                  <span className="font-mono text-sky-650 font-bold shrink-0 min-w-[110px]">/dashboard/settings</span>
-                                                  <span className="text-zinc-500 font-medium">Light/Dark theme toggle + English/Arabic RTL toggle</span>
-                                               </div>
-                                            </div>
+                                          {/* Search Input Box */}
+                                          <div className="w-56 h-5.5 bg-[#1a1a1c] border border-zinc-800 rounded flex items-center justify-between px-2 text-[8.5px] text-zinc-400 cursor-text transition-colors">
+                                             <div className="flex items-center gap-1">
+                                                <svg className="w-2.5 h-2.5 text-zinc-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                                   <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                                </svg>
+                                                <span className="font-medium text-zinc-500">Search To_Do_Small_App...</span>
+                                             </div>
+                                             <span className="text-[7px] bg-zinc-800 border border-zinc-700 text-zinc-400 rounded px-0.5 scale-90 leading-none">Ctrl+K</span>
+                                          </div>
 
-                                            {/* Tech details */}
-                                            <div className="text-[9.5px] mb-3">
-                                               <div className="font-bold text-zinc-800 text-[10px] mb-1">Backend (Express 5 + TypeScript)</div>
-                                               <ul className="list-disc pl-4 space-y-0.5 text-zinc-500 text-start">
-                                                  <li>REST API at <span className="font-mono text-sky-650">/api/tests</span>, <span className="font-mono text-sky-650">/api/bugs</span>, <span className="font-mono text-sky-650">/api/tasks</span></li>
-                                                  <li>Auth middleware (JWT from Supabase)</li>
-                                                  <li>Health check at <span className="font-mono text-sky-650">/api/health</span></li>
-                                               </ul>
-                                            </div>
+                                          {/* Right Dropdown & Connected indicator */}
+                                          <div className="flex items-center gap-2">
+                                             <div className="flex items-center gap-1 px-1.5 py-0.5 border border-zinc-800 bg-[#1e1e20] rounded text-[8.5px] font-medium text-zinc-300 hover:bg-zinc-800 transition-all cursor-pointer">
+                                                <svg className="w-2.5 h-2.5 text-zinc-450" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                                   <path strokeLinecap="round" strokeLinejoin="round" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2z" />
+                                                </svg>
+                                                <span className="max-w-[80px] truncate">To_Do_Small_App</span>
+                                                <span className="text-[7px] text-zinc-500 leading-none">▼</span>
+                                             </div>
+                                             <div className="flex items-center gap-1">
+                                                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                                <button className="text-zinc-500 hover:text-zinc-350">
+                                                   <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+                                                      <path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM14 10a2 2 0 11-4 0 2 2 0 014 0zM22 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                                   </svg>
+                                                </button>
+                                             </div>
+                                          </div>
+                                       </div>
 
-                                            {/* Getting started */}
-                                            <div className="text-[9.5px]">
-                                               <div className="font-bold text-zinc-800 text-[10px] mb-1">To Start</div>
-                                               <ol className="list-decimal pl-4 space-y-0.5 text-zinc-500 font-mono text-[9px] text-start">
-                                                  <li>Create a Supabase project, run <span className="text-emerald-705">supabase/migration.sql</span></li>
-                                                  <li>Set Supabase credentials in <span className="text-zinc-500">frontend/.env.local</span> and <span className="text-zinc-500">backend/.env</span></li>
-                                                  <li>npm run dev from root (runs both apps)</li>
-                                               </ol>
-                                            </div>
-                                         </div>
+                                       {/* Tab Headers bar */}
+                                       <div className="h-8 border-b border-[#222] bg-[#111112] flex items-center justify-between shrink-0 select-none font-sans px-1.5">
+                                          <div className="flex items-center h-full">
+                                             <div className="bg-[#161617] h-full border-r border-[#222] border-b-2 border-b-white text-zinc-200 text-[8.5px] font-semibold px-3 flex items-center gap-1.5 relative top-[0.5px]">
+                                                <svg className="w-3.5 h-3.5 text-zinc-450 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                                   <path strokeLinecap="round" strokeLinejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                                </svg>
+                                                <span>Console</span>
+                                             </div>
+                                             <button className="w-5 h-5 rounded hover:bg-zinc-800 flex items-center justify-center text-zinc-500 cursor-pointer ml-1">
+                                                <span className="text-[11px] leading-none font-semibold">+</span>
+                                             </button>
+                                          </div>
+                                       </div>
 
-                                         {/* IDE Bottom Chat & Integrated Live Compilation Log Section */}
-                                         <div className="border-t border-zinc-200 bg-zinc-100 flex flex-col p-2.5 gap-2 relative z-10 shrink-0 select-none text-start font-sans">
-                                            
-                                            {/* Git Diff Compilation Log Header */}
-                                            <div className="flex items-center justify-between border-b border-zinc-205 pb-1.5 px-1 font-sans text-[8.5px] text-zinc-500">
-                                               <div className="flex items-center gap-1 text-zinc-700 font-semibold cursor-pointer">
-                                                  <span>1 file changed</span>
-                                                  <span className="flex gap-1 ml-1.5 font-bold">
-                                                     <span className="text-sky-600">+{compilingFiles[activeFileIndex].added}</span>
-                                                     <span className="text-red-500">-{compilingFiles[activeFileIndex].deleted}</span>
-                                                  </span>
-                                                  <span className="text-zinc-400 ml-1">▼</span>
-                                               </div>
-                                               <button className="flex items-center gap-1.5 px-2 py-0.5 border border-zinc-200 bg-white hover:bg-zinc-50 rounded text-[8.5px] font-semibold text-zinc-700 transition-all cursor-pointer leading-none">
-                                                  <svg className="w-2.5 h-2.5 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                                                     <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                                                  </svg>
-                                                  <span>Review</span>
-                                               </button>
-                                            </div>
+                                       {/* Dynamic Workspace Dashboard area */}
+                                       <div className="flex-1 flex flex-col items-center justify-between py-10 px-4 select-text leading-relaxed">
+                                          {/* Center Logo & Greetings */}
+                                          <div className="flex flex-col items-center my-auto text-center">
+                                             {/* Overlapping double ring / infinity symbol */}
+                                             <div className="w-14 h-14 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-350 shadow-inner">
+                                                <svg className="w-8 h-8 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
+                                                   <path d="M12 12c-2-2.67-4-4-6-4a4 4 0 1 0 0 8c2 0 4-1.33 6-4zm0 0c2 2.67 4 4 6 4a4 4 0 1 0 0-8c-2 0-4 1.33-6 4z"/>
+                                                </svg>
+                                             </div>
+                                             <h2 className="text-lg md:text-xl font-bold text-white tracking-tight mt-4">Good afternoon, A</h2>
+                                             <p className="text-[10px] md:text-[11px] text-zinc-400 font-light mt-1">
+                                                Build <span className="italic font-normal">anything</span> with your AI coding agent.
+                                             </p>
 
-                                            {/* File updates live looping list (3 items) */}
-                                            <div className="space-y-1.5 px-1 font-sans text-[8.5px]">
-                                               
-                                               {/* File 1 & 2: Completed */}
-                                               {[
-                                                  compilingFiles[(activeFileIndex - 2 + compilingFiles.length) % compilingFiles.length],
-                                                  compilingFiles[(activeFileIndex - 1 + compilingFiles.length) % compilingFiles.length]
-                                               ].map((file, idx) => (
-                                                  <div key={idx} className="flex items-center justify-between text-zinc-500 py-0.5 border-b border-zinc-200/50">
-                                                     <div className="flex items-center gap-2 text-start">
-                                                        <span className="text-[7.5px] uppercase tracking-wider text-zinc-400 font-semibold min-w-[38px]">{file.action === 'Created' ? 'Created' : 'Edited'}</span>
-                                                        {getFileIcon(file.type)}
-                                                        <span className="font-semibold text-zinc-750 truncate">{file.name}</span>
-                                                        <span className="text-[7.5px] text-zinc-450 font-mono truncate max-w-[120px]">{file.path}</span>
-                                                     </div>
-                                                     <div className="flex items-center gap-1.5 font-bold shrink-0 text-start">
-                                                        <span className="text-sky-650">+{file.added}</span>
-                                                        {file.deleted > 0 && <span className="text-red-500/80">-{file.deleted}</span>}
-                                                     </div>
-                                                  </div>
-                                               ))}
+                                             {/* Suggestion Chips */}
+                                             <div className="flex flex-col items-center gap-2 mt-5">
+                                                <div className="flex flex-wrap justify-center gap-1.5 max-w-[420px]">
+                                                   <div className="rounded-full border border-zinc-800 py-1 px-2.5 bg-[#18181b]/35 text-[9px] text-zinc-400 hover:border-zinc-700 hover:text-white transition-colors cursor-pointer flex items-center gap-1.5 select-none">
+                                                      <span>⚡</span>
+                                                      <span>Scaffold a REST API</span>
+                                                   </div>
+                                                   <div className="rounded-full border border-zinc-800 py-1 px-2.5 bg-[#18181b]/35 text-[9px] text-zinc-400 hover:border-zinc-700 hover:text-white transition-colors cursor-pointer flex items-center gap-1.5 select-none">
+                                                      <span>📝</span>
+                                                      <span>Write unit tests</span>
+                                                   </div>
+                                                   <div className="rounded-full border border-zinc-800 py-1 px-2.5 bg-[#18181b]/35 text-[9px] text-zinc-400 hover:border-zinc-700 hover:text-white transition-colors cursor-pointer flex items-center gap-1.5 select-none">
+                                                      <span>🔧</span>
+                                                      <span>Refactor this code</span>
+                                                   </div>
+                                                </div>
+                                                <div className="rounded-full border border-zinc-800 py-1 px-2.5 bg-[#18181b]/35 text-[9px] text-zinc-400 hover:border-zinc-700 hover:text-white transition-colors cursor-pointer flex items-center gap-1.5 select-none">
+                                                   <span>📄</span>
+                                                   <span>Explain this project</span>
+                                                </div>
+                                             </div>
+                                          </div>
 
-                                               {/* File 3: Live Compiling Active File */}
-                                               {(() => {
-                                                  const activeFile = compilingFiles[activeFileIndex];
-                                                  return (
-                                                     <div className="flex items-center justify-between py-0.5 text-zinc-750 border-b border-zinc-200 font-bold bg-sky-500/10 rounded px-1 -mx-1 border-l-2 border-l-sky-500 animate-[pulse_1s_infinite]">
-                                                        <div className="flex items-center gap-2 text-start">
-                                                           <span className="text-[7.5px] uppercase tracking-wider text-sky-600 font-bold min-w-[38px] flex items-center gap-0.5">
-                                                              <svg className="w-2.5 h-2.5 animate-spin shrink-0 text-sky-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 1121.21 7.89M9 11l3-3 3 3" />
-                                                              </svg>
-                                                              <span>LIVE</span>
-                                                           </span>
-                                                           {getFileIcon(activeFile.type)}
-                                                           <span className="text-zinc-800">{activeFile.name}</span>
-                                                           <span className="text-[7.5px] text-zinc-450 font-mono truncate max-w-[120px]">{activeFile.path}</span>
-                                                        </div>
-                                                        <div className="flex items-center gap-1.5 shrink-0 font-extrabold text-[9px] text-start">
-                                                           <span className="text-sky-650">+{activeFile.added}</span>
-                                                           {activeFile.deleted > 0 && <span className="text-red-500">-{activeFile.deleted}</span>}
-                                                        </div>
-                                                     </div>
-                                                  );
-                                               })()}
-                                            </div>
-
-                                            {/* Chat Input row */}
-                                            <div className="relative flex items-center bg-white border border-zinc-200 rounded-md shadow-sm px-2 gap-1.5 h-7 mt-1 overflow-hidden">
-                                               <button className="text-zinc-400 hover:text-zinc-600 cursor-pointer shrink-0">
-                                                  <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                                                     <path strokeLinecap="round" strokeLinejoin="round" d="M12.013 21.013a5.25 5.25 0 01-7.424-7.424l9.83-9.83a3.75 3.75 0 015.304 5.304l-7.905 7.905a2.25 2.25 0 01-3.182-3.182l7.905-7.905a.75.75 0 011.06 1.06l-7.905 7.905a.75.75 0 001.06 1.06l7.905-7.905a2.25 2.25 0 00-3.182-3.182l-7.905 7.905a3.75 3.75 0 005.304 5.304l9.83-9.83a5.25 5.25 0 00-7.424 7.424l-2.013 2.013" />
-                                                  </svg>
-                                               </button>
-                                               <span className="text-[9.5px] text-zinc-400 text-start flex-1 select-none pointer-events-none truncate">
-                                                  {t('hiw.compilation.askAnything')}
-                                               </span>
-                                               <button className="w-5 h-5 rounded-full bg-zinc-100 flex items-center justify-center text-zinc-400 shrink-0">
-                                                  <svg className="w-2.5 h-2.5 transform rotate-90" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
-                                                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
-                                                  </svg>
-                                               </button>
-                                            </div>
-                                         </div>
-                                      </div>
-                                   </div>
-                                </motion.div>
-                             )}
+                                          {/* Chat box container with glowing blue border */}
+                                          <div className="w-[90%] max-w-[580px] border border-[#38bdf8]/40 rounded-xl bg-[#141416]/90 shadow-[0_0_22px_rgba(56,189,248,0.06)] flex flex-col p-2.5 gap-2 relative mt-auto mb-2 shrink-0">
+                                             <textarea
+                                                disabled
+                                                placeholder='Ask anything... "Review my code for best practices"'
+                                                className="w-full text-[10px] text-zinc-300 font-light select-none text-start bg-transparent border-none focus:outline-none resize-none no-scrollbar h-8 placeholder-zinc-550 leading-relaxed cursor-default"
+                                             />
+                                             <div className="flex items-center justify-between mt-1 pt-1.5 border-t border-zinc-800/10 shrink-0">
+                                                <div className="flex items-center gap-1.5">
+                                                   <button className="w-5.5 h-5.5 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-white cursor-pointer select-none leading-none">
+                                                      <span className="text-[10px] font-bold">+</span>
+                                                   </button>
+                                                   <button className="w-5.5 h-5.5 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-zinc-400 hover:text-white cursor-pointer select-none">
+                                                      <svg className="w-3 h-3 transform rotate-45 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                                         <path strokeLinecap="round" strokeLinejoin="round" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+                                                      </svg>
+                                                   </button>
+                                                   <button className="flex items-center gap-0.5 px-2 py-0.5 bg-zinc-900 border border-zinc-800 rounded-full text-[8px] text-zinc-300 hover:text-white cursor-pointer select-none font-semibold">
+                                                      <span>Build</span>
+                                                      <span className="text-[6px] text-zinc-500 leading-none">▼</span>
+                                                   </button>
+                                                   <button className="flex items-center gap-0.5 px-2 py-0.5 bg-zinc-900 border border-[#222] rounded-full text-[8px] text-zinc-300 hover:text-white cursor-pointer select-none font-semibold">
+                                                      <span>Models</span>
+                                                      <span className="text-[6px] text-zinc-500 leading-none">▼</span>
+                                                   </button>
+                                                </div>
+                                                <button className="w-5.5 h-5.5 rounded-full bg-zinc-800 flex items-center justify-center text-zinc-650 shrink-0 select-none">
+                                                   <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                                      <path strokeLinecap="round" strokeLinejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                                                   </svg>
+                                                </button>
+                                             </div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </motion.div>
+                              )}
                           </AnimatePresence>
                           
                        </div>

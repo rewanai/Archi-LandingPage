@@ -192,12 +192,12 @@ export function HowItWorks() {
                            <div className="absolute inset-0 bg-black/15 z-5" />
 
                            {/* Floating OS Window Frame (Analyst Dark Theme) */}
-                           <div className="relative z-10 w-[94%] h-[90%] mx-auto mb-3 bg-[#141416] rounded-2xl shadow-2xl overflow-hidden flex flex-col border border-[#262428] p-2.5 md:p-3 select-none">
+                           <div className="dark relative z-10 w-[94%] h-[90%] mx-auto mb-3 bg-[#141416] rounded-2xl shadow-2xl overflow-hidden flex flex-col border border-[#262428] p-2.5 md:p-3 select-none text-zinc-200">
                               {/* Dashboard Header Bar */}
                               <div className="flex items-center justify-between border-b border-zinc-800 pb-2 mb-2 shrink-0">
                                  <div className="flex flex-col text-start">
                                     <span className="font-bold text-zinc-100 text-[10.5px] md:text-[12px] leading-tight">{t('hiw.analyst.title')}</span>
-                                    <span className="text-[8.5px] text-zinc-550 font-medium">{t('hiw.analyst.project')}</span>
+                                    <span className="text-[8.5px] text-zinc-400 font-medium">{t('hiw.analyst.project')}</span>
                                  </div>
                                  <button className="flex items-center gap-1 px-2.5 py-0.5 border border-red-500/20 text-red-400 rounded-full text-[8px] md:text-[9px] font-medium bg-red-500/5 hover:bg-red-500/10 transition-colors shrink-0">
                                     <svg className="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -214,7 +214,7 @@ export function HowItWorks() {
                                     {/* Chat Header */}
                                     <div className="flex items-center justify-between px-2.5 py-1.5 border-b border-zinc-800 bg-[#161619] shrink-0">
                                        <div className="flex items-center gap-1.5 min-w-0">
-                                          <div className="w-5 h-5 rounded-full bg-zinc-800 flex items-center justify-center shrink-0 border border-zinc-750">
+                                          <div className="w-5 h-5 rounded-full bg-zinc-800 flex items-center justify-center shrink-0 border border-zinc-800">
                                              <svg className="w-3 h-3 text-zinc-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z" />
                                              </svg>
@@ -305,7 +305,7 @@ export function HowItWorks() {
                                     {/* Backlog Cards List */}
                                     <div className="flex-1 overflow-y-auto space-y-1.5 text-[8.5px] md:text-[9px] min-h-0 pr-0.5">
                                        {/* Item 1 (Expanded) */}
-                                       <div className="bg-[#18181b] border border-zinc-850 rounded-md p-2 shadow-xs space-y-1.5 text-start">
+                                       <div className="bg-[#18181b] border border-zinc-800 rounded-md p-2 shadow-xs space-y-1.5 text-start">
                                           <div className="flex items-center justify-between gap-1">
                                              <div className="flex items-center gap-1 min-w-0">
                                                 <svg className="w-3.5 h-3.5 text-zinc-550 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -336,21 +336,21 @@ export function HowItWorks() {
                                        </div>
 
                                        {/* Item 2 */}
-                                       <div className="bg-[#18181b] border border-zinc-855 rounded-md p-2 shadow-xs flex items-center justify-between text-start">
+                                       <div className="bg-[#18181b] border border-zinc-800 rounded-md p-2 shadow-xs flex items-center justify-between text-start">
                                           <span className="font-semibold text-zinc-300">{t('hiw.analyst.item2Title')}</span>
                                           <div className="flex items-center gap-1">
-                                             <span className="px-1.5 py-0.5 rounded-sm bg-zinc-800 text-zinc-500 text-[7.5px] border border-zinc-750">{t('hiw.analyst.item2Features')}</span>
-                                             <svg className="w-3 h-3 text-zinc-550" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                                             <span className="px-1.5 py-0.5 rounded-sm bg-zinc-800 text-zinc-500 text-[7.5px] border border-zinc-800">{t('hiw.analyst.item2Features')}</span>
+                                             <svg className="w-3 h-3 text-zinc-450" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                                              </svg>
                                           </div>
                                        </div>
 
                                        {/* Item 3 */}
-                                       <div className="bg-[#18181b] border border-zinc-855 rounded-md p-2 shadow-xs flex items-center justify-between text-start">
+                                       <div className="bg-[#18181b] border border-zinc-800 rounded-md p-2 shadow-xs flex items-center justify-between text-start">
                                           <span className="font-semibold text-zinc-300">{t('hiw.analyst.item3Title')}</span>
                                           <div className="flex items-center gap-1">
-                                             <span className="px-1.5 py-0.5 rounded-sm bg-zinc-800 text-zinc-500 text-[7.5px] border border-zinc-750">{t('hiw.analyst.item3Features')}</span>
+                                             <span className="px-1.5 py-0.5 rounded-sm bg-zinc-800 text-zinc-500 text-[7.5px] border border-zinc-800">{t('hiw.analyst.item3Features')}</span>
                                              <svg className="w-3 h-3 text-zinc-550" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                                                 <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                                              </svg>
@@ -413,12 +413,12 @@ export function HowItWorks() {
                            <div className="absolute inset-0 bg-black/15 z-5" />
 
                            {/* Floating OS Window Frame (User Stories Dark Theme) */}
-                           <div className="relative z-10 w-[94%] h-[90%] mx-auto mb-3 bg-[#141416] rounded-2xl shadow-2xl overflow-hidden flex flex-col border border-[#262428] p-3 select-none text-zinc-200">
+                           <div className="dark relative z-10 w-[94%] h-[90%] mx-auto mb-3 bg-[#141416] rounded-2xl shadow-2xl overflow-hidden flex flex-col border border-[#262428] p-3 select-none text-zinc-200">
                               {/* Header bar */}
                               <div className="flex items-center justify-between border-b border-zinc-800 pb-2 mb-3 shrink-0">
                                  <div className="flex flex-col text-start">
                                     <span className="font-bold text-zinc-100 text-[11px] md:text-[12px] leading-tight">{t('hiw.stories.title')}</span>
-                                    <span className="text-[8.5px] text-zinc-550 font-medium">{t('hiw.stories.project')}</span>
+                                    <span className="text-[8.5px] text-zinc-400 font-medium">{t('hiw.stories.project')}</span>
                                  </div>
                                  <div className="flex items-center gap-1.5 shrink-0">
                                     <button className="flex items-center gap-1 px-2.5 py-1.5 border border-sky-500/20 text-sky-400 bg-sky-500/10 rounded-full text-[8.5px] font-semibold hover:bg-sky-500/20 transition-all shrink-0">
@@ -436,7 +436,7 @@ export function HowItWorks() {
                                     {stories.map((story, i) => (
                                        <div
                                           key={i}
-                                          className="bg-[#151518]/90 border border-zinc-855 rounded-xl p-2.5 shadow-sm flex flex-col justify-between aspect-[1.35] min-h-[95px] transition-all hover:border-sky-500/30"
+                                          className="bg-[#151518]/90 border border-zinc-800 rounded-xl p-2.5 shadow-sm flex flex-col justify-between aspect-[1.35] min-h-[95px] transition-all hover:border-sky-500/30"
                                        >
                                           {/* Top Action Group */}
                                           <div className="flex items-center justify-between gap-1.5 border-b border-zinc-800 pb-1.5 mb-2 shrink-0">
@@ -545,7 +545,7 @@ export function HowItWorks() {
                            <div className="absolute inset-0 bg-black/15 z-5" />
 
                            {/* Floating OS Window Frame (IDE Dark Theme) */}
-                           <div className="relative z-10 w-[94%] h-[90%] mx-auto mb-3 bg-[#141416] rounded-2xl shadow-2xl overflow-hidden flex flex-col border border-[#262428] select-none text-zinc-200">
+                           <div className="dark relative z-10 w-[94%] h-[90%] mx-auto mb-3 bg-[#141416] rounded-2xl shadow-2xl overflow-hidden flex flex-col border border-zinc-800 select-none text-zinc-200">
                               
                               {/* Style tag for CSS animations (like progress bar) */}
                               <style dangerouslySetInnerHTML={{__html: `
@@ -596,9 +596,9 @@ export function HowItWorks() {
                                  <div className="flex-1 flex flex-col bg-[#151518] overflow-hidden min-w-0 relative">
                                     
                                     {/* Editor Tab Header */}
-                                    <div className="h-7 border-b border-zinc-850 bg-[#121214] flex items-center justify-between shrink-0 select-none font-sans px-1.5">
+                                    <div className="h-7 border-b border-zinc-800 bg-[#121214] flex items-center justify-between shrink-0 select-none font-sans px-1.5">
                                        <div className="flex items-center h-full">
-                                          <div className="bg-[#151518] h-full border-r border-zinc-850 border-t-2 border-t-sky-400 text-zinc-200 text-[8.5px] font-semibold px-3 flex items-center gap-1.5 relative top-[0.5px]">
+                                          <div className="bg-[#151518] h-full border-r border-zinc-800 border-t-2 border-t-sky-400 text-zinc-200 text-[8.5px] font-semibold px-3 flex items-center gap-1.5 relative top-[0.5px]">
                                              <span>QA Platform Business Requirements</span>
                                              <button className="text-zinc-505 hover:text-zinc-350 scale-90">×</button>
                                           </div>
@@ -660,17 +660,17 @@ export function HowItWorks() {
                                     </div>
 
                                     {/* IDE Bottom Chat & Integrated Live Compilation Log Section */}
-                                    <div className="border-t border-zinc-855 bg-[#121214] flex flex-col p-2.5 gap-2 relative z-10 shrink-0 select-none text-start font-sans">
+                                    <div className="border-t border-zinc-800 bg-[#121214] flex flex-col p-2.5 gap-2 relative z-10 shrink-0 select-none text-start font-sans">
                                        
                                        {/* Git Diff Compilation Log Header */}
-                                       <div className="flex items-center justify-between border-b border-[#27272a] pb-1.5 px-1 font-sans text-[8.5px] text-zinc-450" style={{ borderBottomColor: '#27272a' }}>
+                                       <div className="flex items-center justify-between border-b border-[#27272a] pb-1.5 px-1 font-sans text-[8.5px] text-zinc-400" style={{ borderBottomColor: '#27272a' }}>
                                           <div className="flex items-center gap-1 text-zinc-350 font-semibold cursor-pointer">
                                              <span>1 file changed</span>
                                              <span className="flex gap-1 ml-1.5 font-bold">
                                                 <span className="text-emerald-600">+{compilingFiles[activeFileIndex].added}</span>
                                                 <span className="text-red-500">-{compilingFiles[activeFileIndex].deleted}</span>
                                              </span>
-                                             <span className="text-zinc-555 ml-1">▼</span>
+                                             <span className="text-zinc-400 ml-1">▼</span>
                                           </div>
                                           <button className="flex items-center gap-1.5 px-2 py-0.5 border border-zinc-800 bg-[#18181b] hover:bg-zinc-800 rounded text-[8.5px] font-semibold text-zinc-300 transition-all cursor-pointer leading-none">
                                              <svg className="w-2.5 h-2.5 text-zinc-555" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -688,12 +688,12 @@ export function HowItWorks() {
                                              compilingFiles[(activeFileIndex - 2 + compilingFiles.length) % compilingFiles.length],
                                              compilingFiles[(activeFileIndex - 1 + compilingFiles.length) % compilingFiles.length]
                                           ].map((file, idx) => (
-                                             <div key={idx} className="flex items-center justify-between text-zinc-555 py-0.5 border-b border-zinc-850/50">
+                                             <div key={idx} className="flex items-center justify-between text-zinc-400 py-0.5 border-b border-zinc-800/50">
                                                 <div className="flex items-center gap-2 text-start">
                                                    <span className="text-[7.5px] uppercase tracking-wider text-zinc-500 font-semibold min-w-[38px]">{file.action === 'Created' ? 'Created' : 'Edited'}</span>
                                                    {getFileIcon(file.type)}
                                                    <span className="font-semibold text-zinc-350 truncate">{file.name}</span>
-                                                   <span className="text-[7.5px] text-zinc-550 font-mono truncate max-w-[120px]">{file.path}</span>
+                                                   <span className="text-[7.5px] text-zinc-400 font-mono truncate max-w-[120px]">{file.path}</span>
                                                 </div>
                                                 <div className="flex items-center gap-1.5 font-bold shrink-0 text-start">
                                                    <span className="text-emerald-600/80">+{file.added}</span>
@@ -706,7 +706,7 @@ export function HowItWorks() {
                                           {(() => {
                                              const activeFile = compilingFiles[activeFileIndex];
                                              return (
-                                                <div className="flex items-center justify-between py-0.5 text-zinc-205 border-b border-zinc-855 font-bold bg-sky-955/20 rounded px-1 -mx-1 border-l-2 border-l-sky-500 animate-[pulse_1s_infinite]">
+                                                <div className="flex items-center justify-between py-0.5 text-zinc-200 border-b border-zinc-800 font-bold bg-sky-950/20 rounded px-1 -mx-1 border-l-2 border-l-sky-500 animate-[pulse_1s_infinite]">
                                                    <div className="flex items-center gap-2 text-start">
                                                       <span className="text-[7.5px] uppercase tracking-wider text-sky-400 font-bold min-w-[38px] flex items-center gap-0.5">
                                                          <svg className="w-2.5 h-2.5 animate-spin shrink-0 text-sky-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>
