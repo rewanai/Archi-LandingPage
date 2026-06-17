@@ -112,21 +112,23 @@ export function CoreFeatures() {
                     </div>
                 </div>
 
-                {/* Tab Navigation — Archi pill style */}
-                <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-10 w-full border-b border-white/[0.06] pb-6">
-                    {tabs.map((tab) => (
-                        <button
-                            key={tab}
-                            onClick={() => setActiveTab(tab)}
-                            className={`py-1.5 px-4 rounded-full text-[11px] font-semibold uppercase tracking-widest transition-all duration-300 ${
-                                activeTab === tab
-                                    ? 'bg-[#38bdf8]/10 border border-[#38bdf8]/20 text-[#38bdf8]'
-                                    : 'text-white/30 hover:text-white/70 border border-transparent'
-                            }`}
-                        >
-                            {tab}
-                        </button>
-                    ))}
+                {/* Tab Navigation — Centered Tab Bar with light blue border glow */}
+                <div className="flex justify-center w-full mb-12">
+                    <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 p-1.5 bg-[#09090b]/60 backdrop-blur-md border border-[#38bdf8]/30 rounded-full shadow-[0_0_22px_rgba(56,189,248,0.18)] max-w-full">
+                        {tabs.map((tab) => (
+                            <button
+                                key={tab}
+                                onClick={() => setActiveTab(tab)}
+                                className={`py-2 px-4.5 rounded-full text-[10.5px] font-semibold uppercase tracking-widest transition-all duration-300 cursor-pointer ${
+                                    activeTab === tab
+                                        ? 'bg-[#38bdf8]/15 border border-[#38bdf8]/45 text-[#38bdf8] shadow-[0_0_10px_rgba(56,189,248,0.12)]'
+                                        : 'text-white/40 hover:text-white/80 border border-transparent'
+                                }`}
+                            >
+                                {tab}
+                            </button>
+                        ))}
+                    </div>
                 </div>
 
                 {/* Content Viewer (Sunset backdrop with dynamic cards in dark theme) */}
