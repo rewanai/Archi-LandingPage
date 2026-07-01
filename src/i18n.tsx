@@ -61,6 +61,48 @@ const translations: Record<Lang, Record<string, string>> = {
     'archi.business.desc': 'An interactive cognitive engine that interviews you, structures your unstructured thoughts, and automatically builds flawless technical specs, roadmaps, and feature backlogs.',
     'archi.dev.name': 'Archi Dev (The Muscle)',
     'archi.dev.desc': 'A secure, advanced development suite that pulls your finalized roadmaps and autonomously codes the full application—including user interfaces, secure databases, user login layers, and automated safety tests.',
+    'archi.dev.hero.heading': 'Archi Dev\nThe Autonomous {Code Engine}.',
+    'archi.dev.hero.desc': 'Watch your blueprints compile into clean, production-grade applications. From secure database schemas to local payment gateways like Thawani, Archi Dev codes and deploys the entire stack autonomously.',
+
+    // Archi Dev Feature Mockup Cards
+    'archi.features.c1.heading': 'Instant codebase context',
+    'archi.features.c1.desc': 'Fast Context finds the exact files and lines your agent needs—in milliseconds.',
+    'archi.features.c1.title': 'Fast Context Where is reconciliati...',
+    'archi.features.c1.summary': 'Found where updates enqueue onto the root. Following how the scheduler selects lanes and enters the work loop to begin rendering.',
+    'archi.features.c1.item1': 'Read ReactFiberRootScheduler.js',
+    'archi.features.c1.item2': 'grep \'ensureRootIsScheduled\'',
+    'archi.features.c1.item3': 'grep \'performWorkOnRoot\'',
+    'archi.features.c1.item4': 'Read ReactFiberWorkLoop.js',
+    'archi.features.c1.item5': 'grep \'renderRootSync\'',
+    'archi.features.c1.item6': 'grep \'renderRootConcurrent\'',
+    'archi.features.c1.item7': 'grep \'workLoopSync\'',
+    'archi.features.c1.item8': 'Read ReactFiberBeginWork.js',
+
+    'archi.features.c2.heading': 'Never miss a detail',
+    'archi.features.c2.desc': 'Rapidly (or deeply) review every agent diff—before you push.',
+    'archi.features.c2.bugs': '1 Bug',
+    'archi.features.c2.bugText': 'setFakeTimerMarker sets clock to fal...',
+    'archi.features.c2.bugSub': 'Bug FakeTimers.zig:188',
+    'archi.features.c2.flags': '3 Flags',
+    'archi.features.c2.markRead': 'Mark all as read',
+    'archi.features.c2.flag1Text': 'Test order dependency - first test as...',
+    'archi.features.c2.flag1Sub': 'Investigate 25869.test.ts:20-23',
+    'archi.features.c2.flag2Text': 'setFakeTimerMarker silently ignores ...',
+    'archi.features.c2.flag2Sub': 'Informational FakeTimers.zig:179-189',
+    'archi.features.c2.flag3Text': 'Comment at line 185-187 is inconsist...',
+    'archi.features.c2.flag3Sub': 'Informational FakeTimers.zig:185-187',
+
+    'archi.features.c3.heading': 'Free world-class models',
+    'archi.features.c3.desc': 'Unlimited access to SWE-1.6, the fastest coding model in the world.',
+    'archi.features.c3.title': 'SWE-Bench Pro',
+
+    'archi.features.c4.heading': 'Effortless handoff to the cloud',
+    'archi.features.c4.desc': 'The only IDE designed for you to close your laptop.',
+    'archi.features.c4.title': 'plan.md',
+    'archi.features.c4.summary': 'To build a dashboard for real-time store sales data, we will stream events from Kafka over websockets and render them onto a three.js globe.',
+    'archi.features.c4.view': 'View plan',
+    'archi.features.c4.status': 'Implemented',
+    'archi.features.c4.thought': 'Thought for 6s',
 
     // ──── Process Section ────
     'process.text1.line1': 'Simple Prompts Build',
@@ -139,6 +181,26 @@ const translations: Record<Lang, Record<string, string>> = {
     'hiw.form.goals.placeholder': 'e.g. Increase 30-day retention to 40%.',
     'hiw.form.cancel': 'Cancel',
     'hiw.form.generate': 'Generate BRD',
+    // AI Product Manager Mockup
+    'hiw.pm.back': 'Back',
+    'hiw.pm.title': 'AI Product Manager',
+    'hiw.pm.discovery': 'Discovery',
+    'hiw.pm.active': 'PM ACTIVE',
+    'hiw.pm.hello': 'Hello! I am your AI Product Manager. I\'m excited to help you scope and initialize your new venture. To start, what is the name or working title of your project, and what is your target due date?',
+    'hiw.pm.replyPlaceholder': 'Reply to the AI Product Manager...',
+    'hiw.pm.send': 'Send',
+    'hiw.pm.ledger': 'Discovery Ledger',
+    'hiw.pm.ventureTitle': 'VENTURE TITLE',
+    'hiw.pm.extracting': 'Extracting name',
+    'hiw.pm.understanding': 'PROJECT UNDERSTANDING',
+    'hiw.pm.phase': 'Phase: Project Name',
+    'hiw.pm.check1': 'Venture Working Title',
+    'hiw.pm.check2': 'Audience & User Problems',
+    'hiw.pm.check3': 'Functional Requirements',
+    'hiw.pm.check4': 'Integrations & Constraints',
+    'hiw.pm.userMsg1': "I want to build a mobile app for tracking daily habits, let's call it HabitArc. Target due date is end of next month.",
+    'hiw.pm.botMsg2': "Great name! 'HabitArc' sounds promising. I've logged the venture title in your ledger. Now, who is the target audience for HabitArc, and what core problems are we solving for them?",
+    'hiw.pm.userName': 'You',
     'hiw.design.title': 'Design Configuration',
     'hiw.design.desc': 'Upload branding assets, choose brand colors, select custom fonts, and instantly preview your dashboard layout.',
     'hiw.design.logo': 'Application Logo',
@@ -176,7 +238,7 @@ const translations: Record<Lang, Record<string, string>> = {
     'hiw.phase01.q3.desc': 'Should the system hook into automated regional background screening registries for courier activation?',
     'hiw.phase01.footer': 'Awaiting partner resolution...',
     'hiw.phase01.footerAr': 'في انتظار إجابتك لرسم المخطط',
-    
+
     // Analyst Clone keys
     'hiw.analyst.title': 'The Analyst',
     'hiw.analyst.project': 'Project: My Chat bot',
@@ -235,14 +297,14 @@ const translations: Record<Lang, Record<string, string>> = {
     'hiw.stories.c6Tag': 'AI Search Algorithm',
     'hiw.stories.new': 'New',
 
-     // Compilation Keys
-     'hiw.compilation.title': 'QA Platform Business Requirements',
-     'hiw.compilation.botTitle': 'Archi Chatbot',
-     'hiw.compilation.botMsg': 'Give me your Excel file',
-     'hiw.compilation.inputPlaceholder': 'Upload Excel file...',
-     'hiw.compilation.askAnything': 'Ask anything...',
-     'hiw.compilation.build': 'Build',
-     'hiw.compilation.models': 'Models',
+    // Compilation Keys
+    'hiw.compilation.title': 'QA Platform Business Requirements',
+    'hiw.compilation.botTitle': 'Archi Chatbot',
+    'hiw.compilation.botMsg': 'Give me your Excel file',
+    'hiw.compilation.inputPlaceholder': 'Upload Excel file...',
+    'hiw.compilation.askAnything': 'Ask anything...',
+    'hiw.compilation.build': 'Build',
+    'hiw.compilation.models': 'Models',
 
     // Phase 02
     'hiw.phase02.title': 'One-Click Breakdown',
@@ -254,7 +316,7 @@ const translations: Record<Lang, Record<string, string>> = {
     'hiw.phase02.row2.badge': 'Aligned',
     'hiw.phase02.row3.title': 'Omani Telecommunications SMS Gateway Integration',
     'hiw.phase02.row3.badge': 'Verified Ready',
-    
+
     // Phase 03
     'hiw.phase03.title': 'Autonomous Compilation',
     'hiw.phase03.desc': 'The Rewan team feeds your locked roadmap into ',
@@ -431,6 +493,48 @@ const translations: Record<Lang, Record<string, string>> = {
     'archi.business.desc': 'محرك إدراكي تفاعلي يحاورك، وينظم أفكارك العشوائية، ويقوم تلقائياً ببناء وثائق المتمتطلبات الفنية، وخرائط الطريق، وجداول العمل الخالية من الأخطاء.',
     'archi.dev.name': 'Archi Dev (المحرك التنفيذي)',
     'archi.dev.desc': 'بيئة تطوير آمنة تسحب خطط العمل المعتمدة وتبني التطبيق بالكامل ذاتياً—بما في ذلك الواجهات، وقواعد البيانات المشفرة، وأنظمة الحماية، واختبارات السلامة التلقائية.',
+    'archi.dev.hero.heading': 'آركي ديف\nمحرك {البرمجة الذاتي}.',
+    'archi.dev.hero.desc': 'شاهد مخططات تطبيقك وهي تتحول تلقائيًا إلى أكواد برمجية جاهزة للإنتاج. من قواعد البيانات الآمنة إلى دمج بوابات الدفع المحلية مثل ثواني، يقوم آركي ديف ببرمجة ونشر تطبيقك بالكامل ذاتيًا.',
+
+    // Archi Dev Feature Mockup Cards
+    'archi.features.c1.heading': 'سياق فوري للكود',
+    'archi.features.c1.desc': 'يقوم Fast Context بالعثور على الملفات والسطور الدقيقة التي يحتاجها وكيلك الذكي - في أجزاء من الثانية.',
+    'archi.features.c1.title': 'Fast Context أين توجد المزامنة...',
+    'archi.features.c1.summary': 'تم العثور على مكان إدراج التحديثات في الجذر. تتبع كيفية تحديد الجدولة للمسارات والدخول في حلقة العمل لبدء العرض.',
+    'archi.features.c1.item1': 'قراءة ReactFiberRootScheduler.js',
+    'archi.features.c1.item2': 'grep \'ensureRootIsScheduled\'',
+    'archi.features.c1.item3': 'grep \'performWorkOnRoot\'',
+    'archi.features.c1.item4': 'قراءة ReactFiberWorkLoop.js',
+    'archi.features.c1.item5': 'grep \'renderRootSync\'',
+    'archi.features.c1.item6': 'grep \'renderRootConcurrent\'',
+    'archi.features.c1.item7': 'grep \'workLoopSync\'',
+    'archi.features.c1.item8': 'قراءة ReactFiberBeginWork.js',
+
+    'archi.features.c2.heading': 'لا تفوّت أي تفصيل',
+    'archi.features.c2.desc': 'راجع بسرعة (أو بعمق) كل تعديل للوكيل البرمجي - قبل أن ترفع الكود.',
+    'archi.features.c2.bugs': 'ثغرة واحدة',
+    'archi.features.c2.bugText': 'setFakeTimerMarker يضبط الساعة على fal...',
+    'archi.features.c2.bugSub': 'ثغرة في FakeTimers.zig:188',
+    'archi.features.c2.flags': '٣ تنبيهات',
+    'archi.features.c2.markRead': 'تحديد الكل كمقروء',
+    'archi.features.c2.flag1Text': 'اعتمادية ترتيب الاختبار - أول اختبار كـ...',
+    'archi.features.c2.flag1Sub': 'تحقق في 25869.test.ts:20-23',
+    'archi.features.c2.flag2Text': 'setFakeTimerMarker يتجاهل بصمت...',
+    'archi.features.c2.flag2Sub': 'معلوماتي في FakeTimers.zig:179-189',
+    'archi.features.c2.flag3Text': 'التعليق في السطر 185-187 غير متسق...',
+    'archi.features.c2.flag3Sub': 'معلوماتي في FakeTimers.zig:185-187',
+
+    'archi.features.c3.heading': 'نماذج عالمية مجانية',
+    'archi.features.c3.desc': 'وصول غير محدود إلى SWE-1.6، أسرع نموذج برمجة في العالم.',
+    'archi.features.c3.title': 'SWE-Bench Pro',
+
+    'archi.features.c4.heading': 'نشر سحابي تلقائي وسلس',
+    'archi.features.c4.desc': 'بيئة التطوير المتكاملة الوحيدة المصممة لتتمكن من إغلاق جهازك المحمول.',
+    'archi.features.c4.title': 'plan.md',
+    'archi.features.c4.summary': 'لبناء لوحة تحكم لبيانات مبيعات المتجر في الوقت الفعلي، سنقوم ببث الأحداث من Kafka عبر بروتوكول websockets وعرضها على مجسم three.js ثلاثي الأبعاد.',
+    'archi.features.c4.view': 'عرض الخطة',
+    'archi.features.c4.status': 'تم التنفيذ',
+    'archi.features.c4.thought': 'تفكير لمدة 6 ثوانٍ',
 
     // ──── Process Section ────
     'process.text1.line1': 'الأوامر البسيطة تبني',
@@ -509,6 +613,26 @@ const translations: Record<Lang, Record<string, string>> = {
     'hiw.form.goals.placeholder': 'مثال: زيادة نسبة الاحتفاظ بالمستخدمين لـ 30 يوماً إلى 40%.',
     'hiw.form.cancel': 'إلغاء',
     'hiw.form.generate': 'توليد الوثيقة',
+    // AI Product Manager Mockup
+    'hiw.pm.back': 'رجوع',
+    'hiw.pm.title': 'مدير المنتج الذكي',
+    'hiw.pm.discovery': 'مرحلة الاكتشاف',
+    'hiw.pm.active': 'المدير نشط',
+    'hiw.pm.hello': 'مرحباً! أنا مدير المنتج الخاص بك بالذكاء الاصطناعي. يسعدني مساعدتك في تحديد نطاق وإطلاق مشروعك الجديد. للبدء، ما هو اسم أو عنوان العمل المقترح لمشروعك، وما هو التاريخ المستهدف للتسليم؟',
+    'hiw.pm.replyPlaceholder': 'اكتب رداً لمدير المنتج الذكي...',
+    'hiw.pm.send': 'إرسال',
+    'hiw.pm.ledger': 'سجل الاكتشاف',
+    'hiw.pm.ventureTitle': 'اسم المشروع',
+    'hiw.pm.extracting': 'جاري استخراج الاسم',
+    'hiw.pm.understanding': 'فهم أبعاد المشروع',
+    'hiw.pm.phase': 'المرحلة: اسم المشروع',
+    'hiw.pm.check1': 'عنوان العمل للمشروع',
+    'hiw.pm.check2': 'الجمهور المستهدف والمشاكل',
+    'hiw.pm.check3': 'المتطلبات الوظيفية للمشروع',
+    'hiw.pm.check4': 'التكاملات والمحددات التقنية',
+    'hiw.pm.userMsg1': 'أريد بناء تطبيق جوال لتتبع العادات اليومية، لنطلق عليه اسم HabitArc. تاريخ التسليم المستهدف هو نهاية الشهر القادم.',
+    'hiw.pm.botMsg2': 'اسم رائع! يبدو HabitArc واعداً. لقد قمت بتسجيل اسم المشروع في السجل الخاص بك. الآن، من هو الجمهور المستهدف لـ HabitArc، وما هي المشاكل الأساسية التي نحلها لهم؟',
+    'hiw.pm.userName': 'أنت',
     'hiw.design.title': 'تهيئة التصميم',
     'hiw.design.desc': 'حمّل شعارك، اختر ألوان هويتك البصرية، وحدد الخطوط المناسبة لمشاهدة واجهة تطبيقك فوراً.',
     'hiw.design.logo': 'شعار التطبيق',
@@ -546,7 +670,7 @@ const translations: Record<Lang, Record<string, string>> = {
     'hiw.phase01.q3.desc': 'هل يجب أن يتصل النظام بسجلات الفحص الإقليمية الآلية لتفعيل السعاة؟',
     'hiw.phase01.footer': 'في انتظار حل الشريك...',
     'hiw.phase01.footerAr': 'في انتظار إجابتك لرسم المخطط',
-    
+
     // Analyst Clone keys
     'hiw.analyst.title': 'المحلل',
     'hiw.analyst.project': 'المشروع: بوت المحادثة الخاص بي',
@@ -605,14 +729,14 @@ const translations: Record<Lang, Record<string, string>> = {
     'hiw.stories.c6Tag': 'خوارزمية بحث الذكاء الاصطناعي',
     'hiw.stories.new': 'جديد',
 
-     // Compilation Keys
-     'hiw.compilation.title': 'متطلبات عمل منصة الجودة',
-     'hiw.compilation.botTitle': 'بوت دردشة أركي',
-     'hiw.compilation.botMsg': 'أعطني ملف إكسيل الخاص بك',
-     'hiw.compilation.inputPlaceholder': 'تحميل ملف إكسيل...',
-     'hiw.compilation.askAnything': 'اسأل عن أي شيء...',
-     'hiw.compilation.build': 'بناء',
-     'hiw.compilation.models': 'النماذج',
+    // Compilation Keys
+    'hiw.compilation.title': 'متطلبات عمل منصة الجودة',
+    'hiw.compilation.botTitle': 'بوت دردشة أركي',
+    'hiw.compilation.botMsg': 'أعطني ملف إكسيل الخاص بك',
+    'hiw.compilation.inputPlaceholder': 'تحميل ملف إكسيل...',
+    'hiw.compilation.askAnything': 'اسأل عن أي شيء...',
+    'hiw.compilation.build': 'بناء',
+    'hiw.compilation.models': 'النماذج',
 
     // Phase 02
     'hiw.phase02.title': 'التفكيك الذكي',
@@ -624,7 +748,7 @@ const translations: Record<Lang, Record<string, string>> = {
     'hiw.phase02.row2.badge': 'متوافق',
     'hiw.phase02.row3.title': 'تكامل بوابة الرسائل النصية العُمانية',
     'hiw.phase02.row3.badge': 'جاهز ومُتحقق',
-    
+
     // Phase 03
     'hiw.phase03.title': 'التنفيذ البرمجي',
     'hiw.phase03.desc': 'يقوم فريق ريوان بتمرير خطتك إلى محرك ',

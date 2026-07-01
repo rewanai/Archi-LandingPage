@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Archi — The Business-First AI Software Engine">
+  <title>Archi | Scene 01 — The Sovereign Awakening</title>
+
+  <!-- ══════════════════════════════════════════════════════════
+       TYPEFACE: Tajawal — premium Arabic editorial typography
+       ══════════════════════════════════════════════════════════ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap"
+    rel="stylesheet">
+
+  <style>
+    /* ══════════════════════════════════════════════════════════
+       00 · DESIGN TOKENS — Archi Sovereign Light Palette
+       ══════════════════════════════════════════════════════════ */
+    :root {
+      /* Canvas */
+      --bg:              #f5f4f2;
+
+      /* Typography */
+      --text-primary:    #475569;
+
+      /* Silver horizon line gradient stops */
+      --line-peak:       rgba(226, 232, 240, 1.00);
+      --line-mid:        rgba(203, 213, 225, 0.78);
+      --line-fade:       rgba(148, 163, 184, 0.22);
+
+      /* Line glow layers */
+      --glow-near:       rgba(203, 213, 225, 0.58);
+      --glow-mid:        rgba(148, 163, 184, 0.28);
+      --glow-far:        rgba(148, 163, 184, 0.10);
+      --glow-pulse-near: rgba(203, 213, 225, 0.82);
+      --glow-pulse-mid:  rgba(148, 163, 184, 0.42);
+      --glow-pulse-far:  rgba(148, 163, 184, 0.18);
+
+      /* Font */
+      --font-ar:         'Tajawal', 'Segoe UI', system-ui, sans-serif;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       01 · GLOBAL RESET
+       ══════════════════════════════════════════════════════════ */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: var(--bg);
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       02 · SCENE CONTAINER
+       opacity: 0 here prevents FOUC before GSAP initializes
+       ══════════════════════════════════════════════════════════ */
+    #scene {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: var(--bg);
+      opacity: 0; /* GSAP owns this */
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       03 · CINEMATIC EDGE VIGNETTE
+       Radial gradient that darkens the corners — adds depth
+       and the illusion of a camera lens aperture.
+       ══════════════════════════════════════════════════════════ */
+    .vignette {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        ellipse 88% 82% at 50% 50%,
+        transparent                  36%,
+        rgba(196, 194, 190, 0.52)   100%
+      );
+      pointer-events: none;
+      z-index: 9;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       04 · FILM GRAIN OVERLAY
+       Built with SVG feTurbulence — GPU composited, no JS cost.
+       Oversized (210% × 210%) so CSS position micro-shifts
+       never reveal an edge — the grain is seamless.
+       ══════════════════════════════════════════════════════════ */
+    .grain-wrap {
+      position: absolute;
+      inset: -55%;          /* Centers the oversized element */
+      width: 210%;
+      height: 210%;
+      pointer-events: none;
+      z-index: 5;
+      will-change: transform;
+      opacity: 0;           /* GSAP fades this in */
+    }
+
+    .grain-wrap svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    /*
+      Rapid discrete positional shifts = 35mm film grain illusion.
+      steps(1) = no interpolation between keyframes, only hard cuts.
+      This is critical — smooth transitions would look like blur, not grain.
+    */
+    @keyframes grain-jitter {
+      0%   { transform: translate(  0%,     0%)   }
+      11%  { transform: translate(-1.3%,  -2.2%)  }
+      22%  { transform: translate( 2.1%,   1.2%)  }
+      33%  { transform: translate(-1.9%,   2.5%)  }
+      44%  { transform: translate( 1.5%,  -1.3%)  }
+      55%  { transform: translate(-1.2%,   2.9%)  }
+      66%  { transform: translate( 2.9%,  -1.9%)  }
+      77%  { transform: translate(-2.5%,   1.3%)  }
+      88%  { transform: translate( 1.2%,   2.1%)  }
+      100% { transform: translate(  0%,     0%)   }
+    }
+
+    /* CSS class toggled via JS after grain fades in */
+    .grain-wrap.active {
+      animation: grain-jitter 0.68s steps(1) infinite;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       05 · CAMERA DOLLY LAYER
+       This entire div is the "camera rig."
+       GSAP translates `y` on this element for the drift effect.
+       All scene content lives inside here.
+       ══════════════════════════════════════════════════════════ */
+    .camera-dolly {
+      position: absolute;
+      inset: 0;
+      will-change: transform;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       06 · SILVER ARCHITECTURAL HORIZON LINE
+       The first drawn mark on the canvas — the DNA of Archi.
+       A gradient from transparent edges → luminous center peak.
+       ══════════════════════════════════════════════════════════ */
+    .horizon-line {
+      position: absolute;
+      top: 50%;
+      left: 3.5%;
+      right: 3.5%;
+      height: 1px;
+
+      /* GSAP animates scaleX: 0 → 1 */
+      transform-origin: center center;
+
+      background: linear-gradient(
+        90deg,
+        transparent          0%,
+        var(--line-fade)     7%,
+        var(--line-mid)     22%,
+        var(--line-peak)    50%,
+        var(--line-mid)     78%,
+        var(--line-fade)    93%,
+        transparent        100%
+      );
+
+      /* Resting glow state — GSAP pulses this toward --glow-pulse values */
+      box-shadow:
+        0  0  5px  1px var(--glow-near),
+        0  0 18px  3px var(--glow-mid),
+        0  0 44px  8px var(--glow-far);
+
+      will-change: transform, box-shadow;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       07 · LIGHT LEAK ARTIFACT
+       A brief photon-burst at the center of the line on draw.
+       Adds cinematic light-leak feel — blink and you'll miss it.
+       ══════════════════════════════════════════════════════════ */
+    .light-leak {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: radial-gradient(
+        circle at center,
+        rgba(255, 255, 255, 0.65) 0%,
+        rgba(240, 248, 255, 0.30) 30%,
+        transparent               70%
+      );
+      pointer-events: none;
+      opacity: 0;             /* GSAP controls the pulse */
+      will-change: opacity, transform;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       08 · ARABIC HEADLINE TYPOGRAPHY
+       Positioned so its bottom edge rests 26px above the line.
+       Each .w (word) is a discrete animation unit.
+       ══════════════════════════════════════════════════════════ */
+    .headline-wrap {
+      position: absolute;
+      bottom: calc(50% + 26px);   /* Bottom edge = 26px above horizon */
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      direction: rtl;
+      white-space: nowrap;        /* We control wrapping via .headline-line */
+    }
+
+    /* Semantic line block */
+    .headline-line {
+      display: block;
+      line-height: 1.55;
+    }
+
+    /*
+      Individual animated word token.
+      Initial animation state is set by GSAP (gsap.set) — not here —
+      to avoid flashing before JS initializes. The CSS only defines
+      the resting/final visual appearance.
+    */
+    .w {
+      display: inline-block;
+      font-family: var(--font-ar);
+      font-size: clamp(1.80rem, 3.15vw, 3.90rem);
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: 0.008em;
+      margin: 0 0.16em;
+      will-change: transform, opacity, filter;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ════════════════════════════════════════════════════════════
+       SCENE 01 — THE SOVEREIGN AWAKENING
+       Archi Master Launch Reel | 00:00 → 00:06
+       ════════════════════════════════════════════════════════════ -->
+  <main id="scene" aria-label="Archi — Scene 01: The Sovereign Awakening">
+
+    <!-- ── LAYER A: Cinematic edge vignette ──────────────────── -->
+    <div class="vignette" aria-hidden="true"></div>
+
+    <!-- ── LAYER B: Film grain texture (SVG feTurbulence) ────── -->
+    <div class="grain-wrap" id="grain-wrap" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg">
+        <filter
+          id="grain"
+          x="0%" y="0%"
+          width="100%" height="100%"
+          color-interpolation-filters="linearRGB">
+
+          <!-- Fractal noise: the source of the grain texture -->
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.70 0.73"
+            numOctaves="4"
+            seed="7"
+            stitchTiles="stitch"
+            result="noise"/>
+
+          <!-- Strip all color → pure grayscale grain -->
+          <feColorMatrix
+            type="saturate"
+            values="0"
+            in="noise"/>
+
+        </filter>
+
+        <!-- The grain canvas — opacity kept very low for subtlety -->
+        <rect width="100%" height="100%" filter="url(#grain)" opacity="0.058"/>
+      </svg>
+    </div>
+
+    <!-- ── LAYER C: Camera dolly (GSAP drifts this y-axis) ───── -->
+    <div class="camera-dolly" id="camera-dolly" aria-hidden="true">
+
+      <!-- The silver architectural horizon line -->
+      <div class="horizon-line" id="horizon-line">
+
+        <!-- Light leak artifact: fires once at peak of line draw -->
+        <div class="light-leak" id="light-leak"></div>
+
+      </div>
+
+      <!-- Arabic headline — each .w is individually choreographed -->
+      <div class="headline-wrap" id="headline-wrap">
+
+        <!--
+          *** RTL STAGGER NOTE ***
+          In RTL layout, the first DOM element renders on the RIGHT side.
+          Stagger from 'start' (DOM order) therefore reveals:
+            ثورةُ (right) → الذكاء → الاصطناعي → في → عُمان... (left)
+          This matches Arabic reading order exactly. Natural & elegant.
+        -->
+
+        <!-- Line 1: ثورةُ الذكاء الاصطناعي في عُمان... -->
+        <span class="headline-line" role="text"
+              aria-label="ثورةُ الذكاء الاصطناعي في عُمان...">
+          <span class="w" id="w01">ثورةُ</span>
+          <span class="w" id="w02">الذكاء</span>
+          <span class="w" id="w03">الاصطناعي</span>
+          <span class="w" id="w04">في</span>
+          <span class="w" id="w05">عُمان...</span>
+        </span>
+
+        <!-- Line 2: تحوّلت اليوم إلى واقعٍ ملموس. -->
+        <span class="headline-line" role="text"
+              aria-label="تحوّلت اليوم إلى واقعٍ ملموس.">
+          <span class="w" id="w06">تحوّلت</span>
+          <span class="w" id="w07">اليوم</span>
+          <span class="w" id="w08">إلى</span>
+          <span class="w" id="w09">واقعٍ</span>
+          <span class="w" id="w10">ملموس.</span>
+        </span>
+
+      </div>
+      <!-- /headline-wrap -->
+
+    </div>
+    <!-- /camera-dolly -->
+
+  </main>
+  <!-- /scene -->
+
+
+  <!-- ════════════════════════════════════════════════════════════
+       GSAP 3 CORE ENGINE — Loaded last for render performance
+       ════════════════════════════════════════════════════════════ -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+  <script>
+    /* ════════════════════════════════════════════════════════════
+    |
+    |  SCENE 01 — THE SOVEREIGN AWAKENING
+    |  Archi Master Launch Reel
+    |  Runtime: 00:00 → 00:06 (6.2s active + ambient loop)
+    |
+    |  ─── CHOREOGRAPHY MAP ───────────────────────────────────
+    |
+    |  [t= 0.0s]  PHASE 1: Scene bleeds in from white overexposure
+    |  [t= 0.4s]  PHASE 2: Film grain breathes into the canvas
+    |  [t= 0.8s]  PHASE 3: Silver horizon line draws outward
+    |  [t= 2.1s]  PHASE 3b: Light-leak photon burst at line center
+    |  [t= 1.6s]  PHASE 4: Arabic words ascend through focus blur
+    |  [t= 3.0s]  PHASE 5: Luxury camera dolly begins upward drift
+    |  [t= 3.1s+] AMBIENT: Horizon line breathing glow pulse (∞)
+    |
+    ════════════════════════════════════════════════════════════ */
+
+    // ── Element Cache ─────────────────────────────────────────
+    const scene     = document.getElementById('scene');
+    const grainWrap = document.getElementById('grain-wrap');
+    const camDolly  = document.getElementById('camera-dolly');
+    const hLine     = document.getElementById('horizon-line');
+    const lightLeak = document.getElementById('light-leak');
+    const words     = document.querySelectorAll('.w');
+
+    // ── GPU Acceleration Hint ─────────────────────────────────
+    // Promotes camera-dolly to its own composite layer for
+    // sub-pixel-smooth translation on the y-axis.
+    gsap.set(camDolly, {
+      z: 0,
+      transformStyle: 'preserve-3d'
+    });
+
+    // ── Initial States (GSAP owns all starting values) ────────
+    gsap.set(grainWrap, { opacity: 0 });
+    gsap.set(hLine,     { scaleX: 0, transformOrigin: 'center center' });
+    gsap.set(lightLeak, { opacity: 0, scale: 0.5 });
+    gsap.set(words,     { opacity: 0, y: 30, filter: 'blur(7px)' });
+
+    // ══════════════════════════════════════════════════════════
+    //  MASTER TIMELINE
+    // ══════════════════════════════════════════════════════════
+    const TL = gsap.timeline({
+      defaults: { ease: 'power3.out' }   // Fallback ease — overridden per tween
+    });
+
+    // ┌────────────────────────────────────────────────────────┐
+    // │  PHASE 1 [t=0.0s] — THE VOID OPENS                   │
+    // │                                                        │
+    // │  The canvas bleeds in from pure white — the feeling   │
+    // │  of a film developing, not a page loading.            │
+    // │  power2.inOut: symmetric, slow, editorial.            │
+    // └────────────────────────────────────────────────────────┘
+    TL.to(scene, {
+      opacity:  1,
+      duration: 1.6,
+      ease:     'power2.inOut'
+    }, 0.0);
+
+    // ┌────────────────────────────────────────────────────────┐
+    // │  PHASE 2 [t=0.4s] — GRAIN BREATHES IN                │
+    // │                                                        │
+    // │  The film texture materializes slowly — adds analog   │
+    // │  warmth and cinematic texture to the digital canvas.  │
+    // │  CSS jitter loop kicks in only after grain is visible.│
+    // └────────────────────────────────────────────────────────┘
+    TL.to(grainWrap, {
+      opacity:  1,
+      duration: 2.6,
+      ease:     'power2.out',
+      onComplete() {
+        // Activate the CSS positional micro-shift loop
+        grainWrap.classList.add('active');
+      }
+    }, 0.4);
+
+    // ┌────────────────────────────────────────────────────────┐
+    // │  PHASE 3 [t=0.8s] — THE SILVER LINE IS DRAWN         │
+    // │                                                        │
+    // │  The horizon cuts across the canvas from dead center. │
+    // │  expo.out: maximum explosive confidence at the start, │
+    // │  then coasting to absolute zero velocity at the edge. │
+    // │  This is the signature Archi mark — the first stroke. │
+    // └────────────────────────────────────────────────────────┘
+    TL.to(hLine, {
+      scaleX:   1,
+      duration: 2.4,
+      ease:     'expo.out'
+    }, 0.8);
+
+    // ┌────────────────────────────────────────────────────────┐
+    // │  PHASE 3b [t=2.1s] — LIGHT LEAK ARTIFACT             │
+    // │                                                        │
+    // │  A brief photon-burst at the center of the line,      │
+    // │  timed to fire as the line stroke nears completion.   │
+    // │  Blink and you'll miss it — but your eye feels it.    │
+    // └────────────────────────────────────────────────────────┘
+    TL.to(lightLeak, {
+      opacity:  0.42,
+      scale:    1.4,
+      duration: 0.18,
+      ease:     'power2.out'
+    }, 2.1)
+    .to(lightLeak, {
+      opacity:  0,
+      scale:    2.2,
+      duration: 0.55,
+      ease:     'power3.out'
+    }, '+=0.02'); // Fire immediately after peak
+
+    // ┌────────────────────────────────────────────────────────┐
+    // │  PHASE 4 [t=1.6s] — WORDS ASCEND THROUGH THE ETHER   │
+    // │                                                        │
+    // │  Each Arabic word rises individually through a        │
+    // │  defocus blur — as if sharpening into existence.      │
+    // │                                                        │
+    // │  power4.out: the words land with definitive weight,   │
+    // │  decelerating hard at the end — confident, premium.   │
+    // │                                                        │
+    // │  Stagger from 'start' = DOM order = RTL reading order │
+    // │  (rightmost word first → leftmost word last).         │
+    // └────────────────────────────────────────────────────────┘
+    TL.to(words, {
+      opacity:  1,
+      y:        0,
+      filter:   'blur(0px)',
+      duration: 1.0,
+      stagger: {
+        amount: 1.6,        // Total spread: all 10 words over 1.6s
+        from:   'start',    // DOM order = reading order in RTL context
+        ease:   'power2.inOut'
+      },
+      ease: 'power4.out'
+    }, 1.6);
+
+    // ┌────────────────────────────────────────────────────────┐
+    // │  PHASE 5 [t=3.0s] — LUXURY CAMERA DOLLY DRIFT        │
+    // │                                                        │
+    // │  The camera ascends at near-constant velocity.        │
+    // │  The key feeling: "the camera was already moving when  │
+    // │  we arrived" — an editorial cinema technique.         │
+    // │                                                        │
+    // │  power1.inOut: barely-perceptible ease curves at the  │
+    // │  extremes, giving the illusion of pure linear drift   │
+    // │  with just enough organic variation to feel premium.  │
+    // └────────────────────────────────────────────────────────┘
+    TL.to(camDolly, {
+      y:        -22,
+      duration: 3.4,
+      ease:     'power1.inOut'
+    }, 3.0);
+
+    // ══════════════════════════════════════════════════════════
+    //  AMBIENT: HORIZON LINE BREATHING GLOW (Infinite Loop)
+    //
+    //  After the line finishes drawing, it begins breathing —
+    //  a slow, organic pulse between resting and peak glow.
+    //  sine.inOut: the most natural oscillation curve,
+    //  matching how human attention pulses and rests.
+    // ══════════════════════════════════════════════════════════
+    gsap.to(hLine, {
+      boxShadow: `
+        0  0 10px 2px rgba(203, 213, 225, 0.85),
+        0  0 30px 5px rgba(148, 163, 184, 0.44),
+        0  0 72px 12px rgba(148, 163, 184, 0.18)
+      `,
+      duration: 3.2,
+      repeat:   -1,
+      yoyo:     true,
+      ease:     'sine.inOut',
+      delay:    3.2   // Activates after the line-draw tween completes
+    });
+
+  </script>
+</body>
+</html>

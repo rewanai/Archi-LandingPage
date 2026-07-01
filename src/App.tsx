@@ -21,6 +21,7 @@ import { AppleLoader } from './components/AppleLoader';
 import LogoMarquee from './components/LogoMarquee';
 import { ServicesAccordion } from './components/ServicesAccordion';
 import { TechStackSection } from './components/TechStackSection';
+import { Hero206 } from './components/Hero206';
 import { SmoothCursor } from './components/ui/smooth-cursor';
 import MagicRings from './components/MagicRings';
 
@@ -337,13 +338,13 @@ function AppContent() {
                   className="group inline-flex items-center gap-2.5 bg-[#ffffff]/95 hover:bg-[#ffffff] border border-[#bae6fd] hover:border-[#38bdf8] rounded-full py-1.5 px-3.5 mb-8 w-fit shadow-sm cursor-pointer transition-all duration-300 relative overflow-hidden select-none"
                 >
                   <motion.div layout className="w-1.5 h-1.5 rounded-full bg-[#38bdf8] shrink-0" />
-                  
+
                   <span className="relative flex items-center overflow-hidden h-[18px]">
                     {/* Default badge text */}
                     <span className="text-[13px] font-medium text-[#38bdf8] tracking-wide transition-all duration-300 transform group-hover:-translate-y-6 group-hover:opacity-0 block">
                       {t('hero.badge')}
                     </span>
-                    
+
                     {/* Hover CTA text */}
                     <span className="absolute inset-0 text-[13px] font-semibold text-[#0ea5e9] tracking-wide transition-all duration-300 transform translate-y-6 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 flex items-center whitespace-nowrap">
                       {isRTL ? 'زيارة ريوان' : 'Visit Rewan'}
@@ -474,9 +475,10 @@ function AppContent() {
           </main>
         </div>
         {/* Sticky Tech Stack + Stats Wrapper (Slide over effect) */}
-        <div id="tech-stack" className="relative md:sticky md:top-0 md:min-h-[100dvh] w-full md:z-10 bg-[#f5f4f2] z-20">
+        <div id="tech-stack" className="relative md:sticky md:top-0 md:min-h-screen w-full md:z-10 bg-[#f5f4f2] z-20">
           <TechStackSection />
         </div>
+
 
 
         <div id="process" ref={darkSectionRef} className="w-full relative z-20">
@@ -490,6 +492,17 @@ function AppContent() {
         <div id="what-is-archi" className="w-full relative z-20 bg-[#f5f4f2]">
           <WhatIsArchi />
         </div>
+
+
+        <div id="hero206" className="w-full relative z-20 bg-white">
+          <Hero206
+            heading={t('archi.dev.hero.heading')}
+            description={t('archi.dev.hero.desc')}
+            mockupUrl="Archi-dev"
+          />
+        </div>
+
+
 
         <div id="how-it-works" className="w-full relative z-20 bg-white">
           <HowItWorks />
