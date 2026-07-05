@@ -169,7 +169,7 @@ const Grainient = ({
       webgl: 2,
       alpha: true,
       antialias: false,
-      dpr: Math.min(window.devicePixelRatio || 1, 2)
+      dpr: 1 // Capped at 1.0 for gradients since high-DPI is unnecessary for blurred colors and saves massive GPU fill-rate
     });
 
     const gl = renderer.gl;

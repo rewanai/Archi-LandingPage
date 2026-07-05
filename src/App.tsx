@@ -16,10 +16,12 @@ import { IdeaToProduction } from './components/IdeaToProduction';
 import { CoreFeatures } from './components/CoreFeatures';
 import { Footer37 } from './components/Footer37';
 import { ContactSection } from './components/ContactSection';
+import { WhoIsArchiFor } from './components/WhoIsArchiFor';
 import { WhatIsArchi } from './components/WhatIsArchi';
 import { AppleLoader } from './components/AppleLoader';
 import LogoMarquee from './components/LogoMarquee';
 import { ServicesAccordion } from './components/ServicesAccordion';
+import { WindingProgressSection } from './components/WindingProgressSection';
 import { TechStackSection } from './components/TechStackSection';
 import { Hero206 } from './components/Hero206';
 import { SmoothCursor } from './components/ui/smooth-cursor';
@@ -485,6 +487,10 @@ function AppContent() {
           <ProcessSection />
         </div>
 
+        <div id="winding-progress" className="w-full relative z-20">
+          <WindingProgressSection />
+        </div>
+
         <div id="idea-to-production" className="w-full relative z-20 bg-white">
           <IdeaToProduction />
         </div>
@@ -517,6 +523,10 @@ function AppContent() {
 
         <div id="services-accordion" className="w-full relative z-20 bg-[#f5f4f2]">
           <ServicesAccordion />
+        </div>
+
+        <div id="who-is-archi-for" className="w-full relative z-20">
+          <WhoIsArchiFor />
         </div>
 
         <div id="contact-section" className="w-full relative z-20">
