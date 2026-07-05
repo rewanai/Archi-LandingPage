@@ -487,9 +487,6 @@ function AppContent() {
           <ProcessSection />
         </div>
 
-        <div id="winding-progress" className="w-full relative z-20">
-          <WindingProgressSection />
-        </div>
 
         <div id="idea-to-production" className="w-full relative z-20 bg-white">
           <IdeaToProduction />
