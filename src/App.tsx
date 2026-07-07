@@ -518,12 +518,12 @@ function AppContent() {
 
 
 
-        <div id="services-accordion" className="w-full relative z-20 bg-[#f5f4f2]">
-          <ServicesAccordion />
-        </div>
-
         <div id="who-is-archi-for" className="w-full relative z-20">
           <WhoIsArchiFor />
+        </div>
+
+        <div id="services-accordion" className="w-full relative z-20 bg-[#f5f4f2]">
+          <ServicesAccordion />
         </div>
 
         <div id="contact-section" className="w-full relative z-20">

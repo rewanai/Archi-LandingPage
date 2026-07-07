@@ -1,18 +1,25 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
-import { Rocket, Building2, Sliders, Check, ArrowRight } from 'lucide-react';
+import { Check, ArrowRight } from 'lucide-react';
 import { useLanguage } from '../i18n';
 import Grainient from './Grainient';
+import dhofarMist from '../assets/images/dhofar_mist.png';
+import icon2 from '../assets/images/icon2.png';
+import icon3 from '../assets/images/icon3.png';
+import iconnobg from '../assets/images/iconnobg.png';
+import dhofarMistAlt from '../assets/images/dhofar_mist_alt.png';
 
 interface CardData {
   id: string;
-  icon: React.ComponentType<any>;
+  icon: string;
   title: string;
   tagline: string;
   bullets: string[];
   cta: string;
   theme: string;
   pill?: string;
+  bgImage?: string;
+  bgClass?: string;
 }
 
 interface TargetCardProps {
@@ -24,7 +31,6 @@ interface TargetCardProps {
 }
 
 function TargetCard({ card, index, isRTL, handleScrollToContact }: TargetCardProps) {
-  const Icon = card.icon;
   const isFeatured = card.theme === 'featured';
 
   // Mouse coordinate tracking for cursor spotlight glow effect
@@ -46,12 +52,27 @@ function TargetCard({ card, index, isRTL, handleScrollToContact }: TargetCardPro
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`group relative flex flex-col justify-between rounded-3xl p-8 md:p-9 transition-all duration-300 border ${
+      className={`group relative flex flex-col justify-between rounded-3xl p-8 md:p-9 transition-all duration-300 border overflow-hidden ${
         isFeatured 
           ? 'text-white border-slate-800/80 shadow-2xl shadow-cyan-950/30 overflow-hidden md:scale-[1.05] md:-translate-y-2 z-10 hover:md:scale-[1.07]' 
           : 'bg-white border-slate-200/80 text-slate-800 shadow-lg shadow-slate-100/40 hover:bg-[#fbfcfd] hover:border-[#38bdf8]/40 hover:shadow-xl hover:shadow-[#38bdf8]/5'
       }`}
     >
+      {/* Background image for side cards */}
+      {!isFeatured && card.bgImage && (
+        <div className="absolute inset-0 z-0 rounded-3xl overflow-hidden pointer-events-none opacity-[0.75]">
+          <img 
+            src={card.bgImage} 
+            alt="" 
+            className={`w-full h-full object-cover transition-transform duration-700 ease-out grayscale saturate-25 contrast-125 brightness-115 ${
+              card.bgClass || 'object-right-bottom scale-110 group-hover:scale-115'
+            }`}
+          />
+          {/* Overlay to ensure text readability */}
+          <div className="absolute inset-0 bg-white/60" />
+        </div>
+      )}
+
       {/* Interactive cursor spotlight glow overlay (for side glass cards) */}
       {!isFeatured && (
         <div 
@@ -107,18 +128,22 @@ function TargetCard({ card, index, isRTL, handleScrollToContact }: TargetCardPro
             {/* Card Icon Header (Premium Double-Ring Glassmorphic) */}
             <div className="relative w-12 h-12 flex items-center justify-center">
               {/* Outer ring */}
-              <div className={`absolute inset-0 rounded-2xl border transition-all duration-300 group-hover:scale-110 ${
+              <div className={`absolute inset-0 rounded-2xl transition-all duration-300 group-hover:scale-110 ${
                 isFeatured 
-                  ? 'border-sky-500/30 bg-sky-500/5 group-hover:border-sky-400/50' 
-                  : 'border-slate-200/50 bg-slate-50/50 group-hover:border-[#38bdf8]/30 group-hover:bg-[#38bdf8]/5'
+                  ? 'bg-sky-500/5' 
+                  : 'bg-slate-50/50 group-hover:bg-[#38bdf8]/5'
               }`} />
               {/* Inner icon container */}
-              <div className={`relative w-9 h-9 rounded-[14px] flex items-center justify-center transition-all duration-300 ${
-                isFeatured 
-                  ? 'bg-[#38bdf8]/15 text-[#38bdf8] shadow-[inset_0_1px_1px_rgba(255,255,255,0.25)]' 
-                  : 'bg-white/90 text-[#38bdf8] border border-slate-100 shadow-sm group-hover:bg-white'
-              }`}>
-                <Icon className="w-5 h-5 stroke-[2.0]" />
+              <div className="relative w-10 h-10 rounded-[14px] flex items-center justify-center transition-all duration-300">
+                <img 
+                  src={card.icon} 
+                  alt="" 
+                  className={`w-8 h-8 object-contain transition-all duration-300 ${
+                    isFeatured 
+                      ? (card.id === 'enterprises' ? '' : 'invert brightness-[3] mix-blend-screen') 
+                      : 'mix-blend-multiply'
+                  }`}
+                />
               </div>
             </div>
 
@@ -208,7 +233,7 @@ export function WhoIsArchiFor() {
   const cards: CardData[] = [
     {
       id: 'creators',
-      icon: Rocket,
+      icon: icon2,
       title: t('target.card1.title'),
       tagline: t('target.card1.tagline'),
       bullets: [
@@ -219,10 +244,12 @@ export function WhoIsArchiFor() {
       cta: t('target.card1.cta'),
       theme: 'normal',
       pill: t('target.card1.pill'),
+      bgImage: dhofarMistAlt,
+      bgClass: 'object-right-bottom scale-x-[-1.1] scale-y-[1.1] group-hover:scale-x-[-1.15] group-hover:scale-y-[1.15]',
     },
     {
       id: 'enterprises',
-      icon: Building2,
+      icon: iconnobg,
       title: t('target.card2.title'),
       tagline: t('target.card2.tagline'),
       bullets: [
@@ -236,7 +263,7 @@ export function WhoIsArchiFor() {
     },
     {
       id: 'custom',
-      icon: Sliders,
+      icon: icon3,
       title: t('target.card3.title'),
       tagline: t('target.card3.tagline'),
       bullets: [
@@ -247,6 +274,7 @@ export function WhoIsArchiFor() {
       cta: t('target.card3.cta'),
       theme: 'normal',
       pill: t('target.card3.pill'),
+      bgImage: dhofarMist,
     },
   ];
 
